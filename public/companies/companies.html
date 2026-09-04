@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Companies | PlacementPrep</title>
+
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="../assets/placementprep-logo.jpg">
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css">
+
+
+    <style>
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+
+        /* =================================================
+           NAVBAR
+           ================================================= */
+
+        .company-navbar {
+
+            height: 76px;
+
+            background: var(--surface);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 0 40px;
+
+            box-shadow: var(--shadow);
+
+            border-bottom: 1px solid var(--border);
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .brand img {
+
+            width: 45px;
+
+            height: 45px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+        }
+
+
+        .brand-name {
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            color: var(--primary);
+
+        }
+
+
+        .back-btn {
+
+            color: var(--primary);
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            padding: 10px 16px;
+
+            border-radius: 10px;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+
+        }
+
+
+        .back-btn:hover {
+
+            background: var(--surface-2, #f0e8ff);
+
+            transform: translateX(-2px);
+
+        }
+
+
+        /* =================================================
+           MAIN
+           ================================================= */
+
+        .company-container {
+
+            max-width: 1200px;
+
+            margin: 45px auto;
+
+            padding: 0 22px 50px;
+
+        }
+
+
+        .page-header {
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .page-header h1 {
+
+            color: var(--primary);
+
+            font-size: 34px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .page-header p {
+
+            color: var(--muted);
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =================================================
+           SEARCH + FILTERS
+           ================================================= */
+
+        .company-controls {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .company-search {
+
+            width: 330px;
+
+            max-width: 100%;
+
+            height: 46px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 0 15px;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .company-search span {
+
+            font-size: 17px;
+
+        }
+
+
+        .company-search input {
+
+            flex: 1;
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            color: var(--text);
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+        }
+
+
+        .company-search input::placeholder {
+
+            color: var(--muted);
+
+        }
+
+
+        .company-filters {
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .company-filter {
+
+            border: 1px solid var(--border);
+
+            background: var(--surface);
+
+            color: var(--text);
+
+            padding: 9px 17px;
+
+            border-radius: 20px;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .company-filter:hover {
+
+            border-color: var(--primary);
+
+        }
+
+
+        .company-filter.active {
+
+            background: var(--primary);
+
+            color: white;
+
+            border-color: var(--primary);
+
+        }
+
+
+        /* =================================================
+           COMPANY COUNT
+           ================================================= */
+
+        .company-heading {
+
+            margin-bottom: 18px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        .company-heading strong {
+
+            color: var(--primary);
+
+            font-size: 15px;
+
+        }
+
+
+        /* =================================================
+           COMPANY GRID
+           ================================================= */
+
+        .companies {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+
+        }
+
+
+        /* =================================================
+           COMPANY CARD
+           ================================================= */
+
+        .company {
+
+            background: var(--surface);
+
+            padding: 22px;
+
+            border-radius: 18px;
+
+            border: 1px solid var(--border);
+
+            box-shadow: var(--shadow);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .company:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 14px 30px rgba(75, 38, 127, 0.12);
+
+        }
+
+
+        /* =================================================
+           LOGO BOX
+           ================================================= */
+
+        .company-logo {
+
+            width: 100%;
+
+            height: 105px;
+
+            border-radius: 15px;
+
+            background: #faf8ff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            overflow: hidden;
+
+        }
+
+
+        .company-logo img {
+
+            max-width: 78%;
+
+            max-height: 75px;
+
+            width: auto;
+
+            height: auto;
+
+            object-fit: contain;
+
+        }
+
+
+        /* =================================================
+           COMPANY TYPE
+           ================================================= */
+
+        .company-type {
+
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 7px;
+
+            background: #f0e8ff;
+
+            color: var(--primary);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.4px;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .company h2 {
+
+            color: var(--primary);
+
+            font-size: 21px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .company p {
+
+            color: var(--muted);
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+
+            min-height: 25px;
+
+        }
+
+
+        /* =================================================
+           BUTTON
+           ================================================= */
+
+        .btn {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #7b4ab8
+            );
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 15px;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+
+            font-size: 13px;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(75, 38, 127, 0.22);
+
+        }
+
+
+        .btn span {
+
+            font-size: 17px;
+
+        }
+
+
+        /* =================================================
+           NO RESULTS
+           ================================================= */
+
+        .no-companies {
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            color: var(--muted);
+
+        }
+
+
+        .no-companies .no-icon {
+
+            font-size: 42px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .no-companies h3 {
+
+            color: var(--primary);
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .no-companies p {
+
+            margin: 0;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 900px) {
+
+            .companies {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .company-navbar {
+
+                height: 68px;
+
+                padding: 0 18px;
+
+            }
+
+
+            .brand img {
+
+                width: 40px;
+
+                height: 40px;
+
+            }
+
+
+            .brand-name {
+
+                font-size: 19px;
+
+            }
+
+
+            .back-btn {
+
+                font-size: 14px;
+
+                padding: 8px 10px;
+
+            }
+
+
+            .company-container {
+
+                margin-top: 30px;
+
+                padding: 0 15px 40px;
+
+            }
+
+
+            .page-header h1 {
+
+                font-size: 28px;
+
+            }
+
+
+            .company-controls {
+
+                align-items: stretch;
+
+            }
+
+
+            .company-search {
+
+                width: 100%;
+
+            }
+
+
+            .company-filters {
+
+                width: 100%;
+
+            }
+
+
+            .companies {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .company {
+
+                padding: 20px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVBAR
+         ================================================= -->
+
+    <nav class="company-navbar">
+
+        <div class="brand">
+
+            <img
+                src="../assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo">
+
+            <span class="brand-name">
+                PlacementPrep
+            </span>
+
+        </div>
+
+
+        <a
+            href="../dashboard.html"
+            class="back-btn">
+
+            ← Dashboard
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+         ================================================= -->
+
+    <main class="company-container">
+
+
+        <div class="page-header">
+
+            <h1>
+                Company Preparation 🏢
+            </h1>
+
+            <p>
+                Explore company-wise preparation resources
+                and interview guidance for your placement journey.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SEARCH + FILTERS
+             ================================================= -->
+
+        <section class="company-controls">
+
+
+            <div class="company-search">
+
+                <span>🔍</span>
+
+                <input
+                    type="text"
+                    id="companySearch"
+                    placeholder="Search companies..."
+                    autocomplete="off">
+
+            </div>
+
+
+            <div class="company-filters">
+
+
+                <button
+                    class="company-filter active"
+                    data-filter="All">
+
+                    All
+
+                </button>
+
+
+                <button
+                    class="company-filter"
+                    data-filter="Product">
+
+                    Product
+
+                </button>
+
+
+                <button
+                    class="company-filter"
+                    data-filter="Service">
+
+                    Service
+
+                </button>
+
+
+                <button
+                    class="company-filter"
+                    data-filter="Training">
+
+                    Training
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             COMPANY COUNT
+             ================================================= -->
+
+        <div class="company-heading">
+
+            Showing
+            <strong id="companyCount">0</strong>
+            companies
+
+        </div>
+
+
+
+        <!-- =================================================
+             COMPANY GRID
+             ================================================= -->
+
+        <div
+            class="companies"
+            id="companiesGrid">
+
+        </div>
+
+
+
+        <!-- =================================================
+             NO RESULTS
+             ================================================= -->
+
+        <div
+            class="no-companies"
+            id="noCompanies"
+            style="display: none;">
+
+            <div class="no-icon">
+                🔎
+            </div>
+
+            <h3>
+                No companies found
+            </h3>
+
+            <p>
+                Try searching with another company name.
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         COMPANY JAVASCRIPT
+         ================================================= -->
+
+    <script src="companies.js"></script>
+
+
+</body>
+
+</html>

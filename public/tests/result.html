@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Test Result | PlacementPrep</title>
+
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <link rel="icon"
+          type="image/jpeg"
+          href="../assets/placementprep-logo.jpg">
+
+    <style>
+
+        /* ================================
+           RESULT PAGE
+        ================================= */
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(123, 79, 168, 0.12),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 85%,
+                    rgba(232, 126, 63, 0.10),
+                    transparent 30%
+                ),
+                #f8f3ea;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+        .result-container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .result-card {
+            background: rgba(255, 252, 246, 0.97);
+
+            border: 1px solid rgba(75, 38, 127, 0.10);
+
+            border-radius: 28px;
+
+            padding: 45px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 70px rgba(75, 38, 127, 0.12);
+        }
+
+        /* ================================
+           LOADING
+        ================================= */
+
+        #loading {
+            color: #756b7d;
+
+            font-size: 15px;
+
+            padding: 40px 20px;
+        }
+
+        /* ================================
+           RESULT AREA
+        ================================= */
+
+        .result-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eee4f7,
+                    #f9e9dc
+                );
+
+            font-size: 34px;
+        }
+
+        .result-title {
+            color: #35204f;
+
+            font-size: 32px;
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+        .test-name {
+            color: #70459a;
+
+            font-size: 15px;
+            font-weight: 750;
+
+            margin-bottom: 30px;
+        }
+
+        /* ================================
+           SCORE
+        ================================= */
+
+        .score-circle {
+            width: 190px;
+            height: 190px;
+
+            margin: 0 auto 30px;
+
+            border-radius: 50%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #fffdf9 55%,
+                    #eee4f7 56%,
+                    #e1d2ed 100%
+                );
+
+            border: 8px solid #f0e6f5;
+
+            box-shadow:
+                0 12px 35px rgba(75, 38, 127, 0.10);
+        }
+
+        .score {
+            color: #5b3288;
+
+            font-size: 43px;
+            font-weight: 800;
+
+            line-height: 1;
+        }
+
+        .percentage {
+            color: #817687;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            margin-top: 9px;
+        }
+
+        /* ================================
+           STATS
+        ================================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .stat {
+            padding: 20px 15px;
+
+            border-radius: 14px;
+
+            background: #f7f1e9;
+
+            border: 1px solid #eadfe9;
+        }
+
+        .stat h3 {
+            color: #5b3288;
+
+            font-size: 25px;
+            font-weight: 800;
+
+            margin-bottom: 5px;
+        }
+
+        .stat p {
+            color: #817687;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* ================================
+           MESSAGE
+        ================================= */
+
+        .result-message {
+            padding: 14px 18px;
+
+            margin-bottom: 25px;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f0e7f7,
+                    #f8eee7
+                );
+
+            color: #54336f;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            border: 1px solid #e5d7ea;
+        }
+
+        /* ================================
+           BUTTONS
+        ================================= */
+
+        .result-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .result-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-width: 135px;
+
+            padding: 12px 20px;
+
+            border-radius: 11px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 750;
+
+            transition: all 0.2s ease;
+        }
+
+        .result-btn-primary {
+            background:
+                linear-gradient(
+                    135deg,
+                    #5b3288,
+                    #7b4fa8
+                );
+
+            color: white;
+
+            box-shadow:
+                0 8px 20px rgba(91, 50, 136, 0.20);
+        }
+
+        .result-btn-primary:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 12px 25px rgba(91, 50, 136, 0.26);
+        }
+
+        .result-btn-secondary {
+            background: #eee7ee;
+
+            color: #4f3b5d;
+
+            border: 1px solid #dfd4e1;
+        }
+
+        .result-btn-secondary:hover {
+            background: #e7ddea;
+
+            transform: translateY(-1px);
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 650px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .result-card {
+                padding: 30px 20px;
+
+                border-radius: 22px;
+            }
+
+            .result-title {
+                font-size: 27px;
+            }
+
+            .score-circle {
+                width: 165px;
+                height: 165px;
+            }
+
+            .score {
+                font-size: 37px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .result-buttons {
+                flex-direction: column;
+            }
+
+            .result-btn {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="result-container">
+
+    <div class="result-card">
+
+        <!-- Loading -->
+
+        <div id="loading">
+            Loading your result...
+        </div>
+
+
+        <!-- Result -->
+
+        <div id="resultArea" style="display:none;">
+
+            <div class="result-icon">
+                🎉
+            </div>
+
+
+            <h1 class="result-title">
+                Test Completed!
+            </h1>
+
+
+            <div
+                class="test-name"
+                id="testName">
+                Mock Test
+            </div>
+
+
+            <!-- Score -->
+
+            <div class="score-circle">
+
+                <div
+                    class="score"
+                    id="score">
+                    0/0
+                </div>
+
+                <div
+                    class="percentage"
+                    id="percentage">
+                    0%
+                </div>
+
+            </div>
+
+
+            <!-- Stats -->
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <h3 id="correct">
+                        0
+                    </h3>
+
+                    <p>
+                        Correct
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h3 id="wrong">
+                        0
+                    </h3>
+
+                    <p>
+                        Wrong / Unanswered
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h3 id="total">
+                        0
+                    </h3>
+
+                    <p>
+                        Total Questions
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Message -->
+
+            <div
+                class="result-message"
+                id="message">
+
+                Keep practicing!
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="result-buttons">
+
+                <a
+                    href="tests.html"
+                    class="result-btn result-btn-primary">
+
+                    All Tests
+
+                </a>
+
+
+                <a
+                    href="../progress/progress.html"
+                    class="result-btn result-btn-secondary">
+
+                    View Progress
+
+                </a>
+
+
+                <a
+                    href="../dashboard.html"
+                    class="result-btn result-btn-secondary">
+
+                    Dashboard
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+async function loadResult() {
+
+    try {
+
+        const response =
+            await fetch(
+                "http://localhost:3000/api/tests/my-result",
+                {
+                    credentials: "include"
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!result.success) {
+
+            document.getElementById("loading")
+                .textContent =
+                "No test result found.";
+
+            return;
+        }
+
+
+        const data =
+            result.result;
+
+
+        const score =
+            Number(data.score);
+
+
+        const total =
+            Number(data.total_marks);
+
+
+        const percentage =
+            total > 0
+                ? Math.round((score / total) * 100)
+                : 0;
+
+
+        const wrong =
+            total - score;
+
+
+        document.getElementById("loading")
+            .style.display =
+            "none";
+
+
+        document.getElementById("resultArea")
+            .style.display =
+            "block";
+
+
+        document.getElementById("testName")
+            .textContent =
+            data.title || "Mock Test";
+
+
+        document.getElementById("score")
+            .textContent =
+            `${score}/${total}`;
+
+
+        document.getElementById("percentage")
+            .textContent =
+            `${percentage}%`;
+
+
+        document.getElementById("correct")
+            .textContent =
+            score;
+
+
+        document.getElementById("wrong")
+            .textContent =
+            wrong;
+
+
+        document.getElementById("total")
+            .textContent =
+            total;
+
+
+        const message =
+            document.getElementById("message");
+
+
+        if (percentage >= 80) {
+
+            message.textContent =
+                "Excellent! 🔥 Keep up the great work.";
+
+        }
+
+        else if (percentage >= 60) {
+
+            message.textContent =
+                "Good job! 👍 Keep practicing.";
+
+        }
+
+        else if (percentage >= 40) {
+
+            message.textContent =
+                "You're improving. 📚 Practice more.";
+
+        }
+
+        else {
+
+            message.textContent =
+                "Keep learning and try again. 💪";
+
+        }
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        document.getElementById("loading")
+            .textContent =
+            "Unable to connect to server.";
+
+    }
+
+}
+
+
+loadResult();
+
+</script>
+
+</body>
+</html>

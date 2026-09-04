@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mock Test | PlacementPrep</title>
+
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <link rel="icon"
+          type="image/jpeg"
+          href="../assets/placementprep-logo.jpg">
+
+    <style>
+
+        body {
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(123, 79, 168, 0.10),
+                    transparent 28%
+                ),
+                #f8f3ea;
+
+            color: #35204f;
+        }
+
+        /* TOP BAR */
+
+        .test-topbar {
+            height: 70px;
+
+            background: rgba(255, 252, 246, 0.97);
+
+            border-bottom: 1px solid #e7dce8;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 35px;
+
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            box-shadow: 0 4px 20px rgba(75, 38, 127, 0.06);
+        }
+
+        .test-title {
+            color: #4b267f;
+
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .timer {
+            background: #fff0e8;
+            color: #a64f27;
+
+            padding: 10px 18px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            border: 1px solid #f2d4c5;
+        }
+
+        .timer.warning {
+            background: #ffe2dc;
+            color: #a52c20;
+        }
+
+        /* MAIN */
+
+        .test-container {
+            max-width: 950px;
+
+            margin: 35px auto;
+
+            padding: 0 20px;
+        }
+
+        #loading {
+            background: #fffdf9;
+
+            padding: 50px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            color: #786d80;
+
+            border: 1px solid #e8dfe8;
+
+            box-shadow:
+                0 12px 35px rgba(75, 38, 127, 0.07);
+        }
+
+        .question-box,
+        .question-nav {
+            background: #fffdf9;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            border: 1px solid #e8dfe8;
+
+            box-shadow:
+                0 12px 35px rgba(75, 38, 127, 0.07);
+        }
+
+        .question-nav {
+            margin-top: 20px;
+        }
+
+        .question-nav h3 {
+            color: #4b267f;
+
+            font-size: 16px;
+
+            margin-bottom: 5px;
+        }
+
+        .progress {
+            color: #876d9b;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 17px;
+        }
+
+        .question {
+            color: #35204f;
+
+            font-size: 22px;
+
+            line-height: 1.5;
+
+            font-weight: 750;
+
+            margin-bottom: 25px;
+        }
+
+        /* OPTIONS */
+
+        .option {
+            display: block;
+
+            width: 100%;
+
+            text-align: left;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+            border: 1px solid #ddd2e1;
+
+            background: #fffdf9;
+
+            color: #4a3a57;
+
+            border-radius: 11px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            transition: all 0.2s ease;
+        }
+
+        .option:hover {
+            border-color: #8b63ad;
+
+            background: #f7f0fa;
+
+            transform: translateX(2px);
+        }
+
+        .option.selected {
+            border-color: #70459a;
+
+            background: #eee4f7;
+
+            color: #583579;
+
+            box-shadow:
+                0 4px 12px rgba(112, 69, 154, 0.08);
+        }
+
+        /* ACTIONS */
+
+        .actions {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 12px;
+
+            margin-top: 28px;
+        }
+
+        .actions button {
+            border: none;
+
+            padding: 12px 20px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-weight: 750;
+
+            font-size: 13px;
+
+            transition: all 0.2s ease;
+        }
+
+        #prev {
+            background: #eee7ee;
+
+            color: #4f3b5d;
+        }
+
+        #prev:hover {
+            background: #e4dbe6;
+        }
+
+        #next,
+        #submit {
+            background:
+                linear-gradient(
+                    135deg,
+                    #5b3288,
+                    #7b4fa8
+                );
+
+            color: white;
+
+            box-shadow:
+                0 7px 18px rgba(91, 50, 136, 0.18);
+        }
+
+        #next:hover,
+        #submit:hover {
+            transform: translateY(-1px);
+        }
+
+        #submit {
+            display: none;
+        }
+
+        /* QUESTION NUMBERS */
+
+        .numbers {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+
+            margin-top: 15px;
+        }
+
+        .number-btn {
+            width: 40px;
+            height: 40px;
+
+            padding: 0;
+
+            border: 1px solid #ddd2e1;
+
+            border-radius: 9px;
+
+            background: #f7f1e9;
+
+            color: #57445f;
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+        .number-btn:hover {
+            border-color: #8b63ad;
+        }
+
+        .number-btn.answered {
+            background: #e8f4eb;
+
+            color: #39714c;
+
+            border-color: #c9e3d0;
+        }
+
+        .number-btn.current {
+            background: #70459a;
+
+            color: white;
+
+            border-color: #70459a;
+        }
+
+        /* ERROR */
+
+        .error {
+            background: #fff0ed;
+
+            color: #a33d2c;
+
+            padding: 20px;
+
+            border-radius: 11px;
+
+            text-align: center;
+
+            border: 1px solid #f0cbc3;
+        }
+
+        @media (max-width: 600px) {
+
+            .test-topbar {
+                padding: 0 15px;
+            }
+
+            .test-title {
+                font-size: 15px;
+            }
+
+            .timer {
+                padding: 8px 11px;
+                font-size: 12px;
+            }
+
+            .question {
+                font-size: 18px;
+            }
+
+            .question-box,
+            .question-nav {
+                padding: 20px;
+            }
+
+            .actions {
+                flex-wrap: wrap;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="test-topbar">
+
+    <div class="test-title" id="testTitle">
+        📝 Mock Test
+    </div>
+
+    <div class="timer">
+        ⏱️ <span id="timer">10:00</span>
+    </div>
+
+</div>
+
+
+<div class="test-container">
+
+    <div id="loading">
+        Loading questions from database...
+    </div>
+
+
+    <div id="testArea" style="display:none;">
+
+        <div class="question-box">
+
+            <div class="progress" id="progress">
+                Question 1 of 10
+            </div>
+
+            <div class="question" id="question"></div>
+
+            <div id="options"></div>
+
+            <div class="actions">
+
+                <button id="prev" onclick="previousQuestion()">
+                    ← Previous
+                </button>
+
+                <button id="next" onclick="nextQuestion()">
+                    Next →
+                </button>
+
+                <button id="submit" onclick="submitTest()">
+                    Submit Test
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="question-nav">
+
+            <h3>Question Navigation</h3>
+
+            <div class="numbers" id="numbers"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* TEST ID */
+
+const urlParams =
+    new URLSearchParams(window.location.search);
+
+const testId =
+    Number(urlParams.get("testId")) || 1;
+
+
+/* TEST NAMES */
+
+const testNames = {
+
+    1: "🧠 Aptitude Mock Test",
+
+    2: "💻 Technical Fundamentals",
+
+    3: "🎯 Placement Challenge"
+
+};
+
+document.getElementById("testTitle").textContent =
+    testNames[testId] || "📝 Mock Test";
+
+
+/* VARIABLES */
+
+let questions = [];
+
+let currentQuestion = 0;
+
+let selectedAnswers = [];
+
+let timeLeft = 10 * 60;
+
+let startedAt = new Date();
+
+let testSubmitted = false;
+
+
+/* LOAD QUESTIONS */
+
+async function loadQuestions() {
+
+    try {
+
+        const response =
+            await fetch(
+                "http://localhost:3000/api/tests/questions?testId=" + testId
+            );
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success ||
+            !result.questions ||
+            result.questions.length === 0
+        ) {
+
+            document.getElementById("loading").innerHTML = `
+                <div class="error">
+                    No questions available for this test.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        questions =
+            result.questions;
+
+
+        selectedAnswers =
+            new Array(questions.length).fill(null);
+
+
+        document.getElementById("loading")
+            .style.display = "none";
+
+
+        document.getElementById("testArea")
+            .style.display = "block";
+
+
+        loadQuestion();
+
+
+    } catch (error) {
+
+        console.error(
+            "Question loading error:",
+            error
+        );
+
+
+        document.getElementById("loading").innerHTML = `
+            <div class="error">
+                Unable to connect to server.
+                Please make sure Node.js is running.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion() {
+
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById("progress")
+        .textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+
+    document.getElementById("question")
+        .textContent =
+        q.question;
+
+
+    const options =
+        document.getElementById("options");
+
+
+    options.innerHTML = "";
+
+
+    const optionData = [
+
+        ["A", q.option_a],
+
+        ["B", q.option_b],
+
+        ["C", q.option_c],
+
+        ["D", q.option_d]
+
+    ];
+
+
+    optionData.forEach(
+        ([letter, value], index) => {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "option";
+
+            button.textContent =
+                `${letter}. ${value}`;
+
+
+            if (
+                selectedAnswers[currentQuestion]
+                === index
+            ) {
+
+                button.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            button.onclick = function () {
+
+                selectedAnswers[currentQuestion] =
+                    index;
+
+                loadQuestion();
+
+            };
+
+
+            options.appendChild(button);
+
+        }
+    );
+
+
+    document.getElementById("prev")
+        .style.visibility =
+        currentQuestion === 0
+            ? "hidden"
+            : "visible";
+
+
+    if (
+        currentQuestion ===
+        questions.length - 1
+    ) {
+
+        document.getElementById("next")
+            .style.display =
+            "none";
+
+        document.getElementById("submit")
+            .style.display =
+            "block";
+
+    } else {
+
+        document.getElementById("next")
+            .style.display =
+            "block";
+
+        document.getElementById("submit")
+            .style.display =
+            "none";
+
+    }
+
+
+    loadQuestionNumbers();
+
+}
+
+
+/* QUESTION NUMBERS */
+
+function loadQuestionNumbers() {
+
+    const numbers =
+        document.getElementById("numbers");
+
+    numbers.innerHTML = "";
+
+
+    questions.forEach(
+        (_, index) => {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "number-btn";
+
+            button.textContent =
+                index + 1;
+
+
+            if (
+                selectedAnswers[index]
+                !== null
+            ) {
+
+                button.classList.add(
+                    "answered"
+                );
+
+            }
+
+
+            if (
+                currentQuestion === index
+            ) {
+
+                button.classList.add(
+                    "current"
+                );
+
+            }
+
+
+            button.onclick = function () {
+
+                currentQuestion =
+                    index;
+
+                loadQuestion();
+
+            };
+
+
+            numbers.appendChild(button);
+
+        }
+    );
+
+}
+
+
+/* NEXT */
+
+function nextQuestion() {
+
+    if (
+        currentQuestion <
+        questions.length - 1
+    ) {
+
+        currentQuestion++;
+
+        loadQuestion();
+
+    }
+
+}
+
+
+/* PREVIOUS */
+
+function previousQuestion() {
+
+    if (
+        currentQuestion > 0
+    ) {
+
+        currentQuestion--;
+
+        loadQuestion();
+
+    }
+
+}
+
+
+/* SCORE */
+
+function calculateScore() {
+
+    let score = 0;
+
+    const answerLetters = [
+        "A",
+        "B",
+        "C",
+        "D"
+    ];
+
+
+    questions.forEach(
+        (q, index) => {
+
+            if (
+                selectedAnswers[index]
+                !== null
+            ) {
+
+                const selectedLetter =
+                    answerLetters[
+                        selectedAnswers[index]
+                    ];
+
+
+                if (
+                    selectedLetter ===
+                    q.correct_answer
+                ) {
+
+                    score++;
+
+                }
+
+            }
+
+        }
+    );
+
+
+    return score;
+
+}
+
+
+/* SUBMIT */
+
+async function submitTest() {
+
+    if (testSubmitted) {
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to submit the test?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    testSubmitted = true;
+
+    clearInterval(timer);
+
+
+    const score =
+        calculateScore();
+
+    const total =
+        questions.length;
+
+
+    const answered =
+        selectedAnswers.filter(
+            answer =>
+                answer !== null
+        ).length;
+
+
+    localStorage.setItem(
+        "testScore",
+        score
+    );
+
+    localStorage.setItem(
+        "testTotal",
+        total
+    );
+
+    localStorage.setItem(
+        "testAnswered",
+        answered
+    );
+
+    localStorage.setItem(
+        "testId",
+        testId
+    );
+
+    localStorage.setItem(
+        "testName",
+        testNames[testId] || "Mock Test"
+    );
+
+
+    try {
+
+        const response =
+            await fetch(
+                "http://localhost:3000/api/tests/attempts",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    credentials: "include",
+
+                    body: JSON.stringify({
+
+                        test_id:
+                            testId,
+
+                        score:
+                            score,
+
+                        total_marks:
+                            total,
+
+                        started_at:
+                            startedAt.toISOString(),
+
+                        completed_at:
+                            new Date().toISOString()
+
+                    })
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        console.log(
+            "Attempt saved:",
+            result
+        );
+
+
+        if (!result.success) {
+
+            console.error(
+                "Attempt was not saved:",
+                result.message
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Attempt save error:",
+            error
+        );
+
+    }
+
+
+    window.location.href =
+        "result.html";
+
+}
+
+
+/* TIMER */
+
+const timer =
+    setInterval(
+        () => {
+
+            const minutes =
+                Math.floor(
+                    timeLeft / 60
+                );
+
+            const seconds =
+                timeLeft % 60;
+
+
+            document.getElementById(
+                "timer"
+            ).textContent =
+                `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+
+            if (timeLeft <= 60) {
+
+                document.querySelector(".timer")
+                    .classList.add("warning");
+
+            }
+
+
+            timeLeft--;
+
+
+            if (timeLeft < 0) {
+
+                clearInterval(timer);
+
+
+                if (!testSubmitted) {
+
+                    testSubmitted = true;
+
+                    const score =
+                        calculateScore();
+
+                    const total =
+                        questions.length;
+
+                    const answered =
+                        selectedAnswers.filter(
+                            answer =>
+                                answer !== null
+                        ).length;
+
+
+                    localStorage.setItem(
+                        "testScore",
+                        score
+                    );
+
+                    localStorage.setItem(
+                        "testTotal",
+                        total
+                    );
+
+                    localStorage.setItem(
+                        "testAnswered",
+                        answered
+                    );
+
+                    localStorage.setItem(
+                        "testId",
+                        testId
+                    );
+
+                    localStorage.setItem(
+                        "testName",
+                        testNames[testId] ||
+                        "Mock Test"
+                    );
+
+
+                    window.location.href =
+                        "result.html";
+
+                }
+
+            }
+
+        },
+        1000
+    );
+
+
+/* START */
+
+loadQuestions();
+
+</script>
+
+</body>
+</html>

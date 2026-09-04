@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | PlacementPrep</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .admin-navbar {
+            height: 76px;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-text {
+            color: var(--primary);
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           LOGOUT
+        ========================== */
+
+        .logout {
+            background: #fff0f0;
+            color: #b91c1c;
+            border: 1px solid #f5caca;
+            padding: 9px 16px;
+            border-radius: 9px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .logout:hover {
+            background: #ffe1e1;
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================== */
+
+        .container {
+            max-width: 1200px;
+            margin: 45px auto;
+            padding: 0 22px 50px;
+        }
+
+        .header {
+            margin-bottom: 28px;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           STATS
+        ========================== */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 32px;
+        }
+
+        .stat {
+            background: var(--surface);
+            padding: 24px;
+            border-radius: 17px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                var(--primary),
+                #a56de2
+            );
+        }
+
+        .stat h2 {
+            color: var(--primary);
+            font-size: 29px;
+            margin-bottom: 7px;
+        }
+
+        .stat p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MODULES
+        ========================== */
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .module {
+            background: var(--surface);
+            padding: 25px;
+            border-radius: 17px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .module:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(75, 38, 127, 0.11);
+        }
+
+        .module h3 {
+            color: var(--primary);
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .module p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 19px;
+            font-size: 14px;
+        }
+
+        .module a {
+            display: inline-block;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #7b4ab8
+            );
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 9px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .module a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 16px rgba(75, 38, 127, 0.2);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modules {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .admin-navbar {
+                height: 68px;
+                padding: 0 18px;
+            }
+
+            .brand img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-text {
+                font-size: 18px;
+            }
+
+            .logout {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+
+            .container {
+                margin-top: 30px;
+                padding: 0 15px 40px;
+            }
+
+            .header h1 {
+                font-size: 27px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .modules {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="admin-navbar">
+
+        <div class="brand">
+
+            <img
+                src="../assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo"
+            >
+
+            <span class="brand-text">
+                PlacementPrep Admin
+            </span>
+
+        </div>
+
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+    </nav>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="container">
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <h1>
+                Admin Dashboard
+            </h1>
+
+            <p>
+                Manage the Placement Preparation Portal.
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <h2>0</h2>
+
+                <p>
+                    Total Students
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>0</h2>
+
+                <p>
+                    Total Questions
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>0</h2>
+
+                <p>
+                    Total Tests
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h2>0</h2>
+
+                <p>
+                    Companies
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ADMIN MODULES
+        ========================== -->
+
+        <div class="modules">
+
+
+            <!-- STUDENTS -->
+
+            <div class="module">
+
+                <h3>
+                    👨‍🎓 Students
+                </h3>
+
+                <p>
+                    View and manage registered students.
+                </p>
+
+                <a href="students.html">
+                    Manage Students
+                </a>
+
+            </div>
+
+
+
+            <!-- QUESTIONS -->
+
+            <div class="module">
+
+                <h3>
+                    ❓ Questions
+                </h3>
+
+                <p>
+                    Add and manage aptitude and technical questions.
+                </p>
+
+                <a href="questions.html">
+                    Manage Questions
+                </a>
+
+            </div>
+
+
+
+            <!-- TESTS -->
+
+            <div class="module">
+
+                <h3>
+                    📝 Tests
+                </h3>
+
+                <p>
+                    Create and manage placement tests.
+                </p>
+
+                <a href="tests.html">
+                    Manage Tests
+                </a>
+
+            </div>
+
+
+
+            <!-- COMPANIES -->
+
+            <div class="module">
+
+                <h3>
+                    🏢 Companies
+                </h3>
+
+                <p>
+                    Manage company preparation resources.
+                </p>
+
+                <a href="companies.html">
+                    Manage Companies
+                </a>
+
+            </div>
+
+
+
+            <!-- INTERVIEWS -->
+
+            <div class="module">
+
+                <h3>
+                    🎤 Interviews
+                </h3>
+
+                <p>
+                    Manage technical and HR interview questions.
+                </p>
+
+                <a href="interviews.html">
+                    Manage Interviews
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <script>
+
+
+        /* =========================
+           ADMIN AUTH CHECK
+        ========================== */
+
+        if (
+            sessionStorage.getItem("adminLoggedIn") !== "true"
+        ) {
+
+            window.location.href =
+                "admin-login.html";
+
+        }
+
+
+
+        /* =========================
+           LOGOUT
+        ========================== */
+
+        function logout() {
+
+            sessionStorage.removeItem(
+                "adminLoggedIn"
+            );
+
+
+            window.location.href =
+                "admin-login.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

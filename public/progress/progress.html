@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Progress | PlacementPrep</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+        body {
+            background: #f7f2ea;
+            margin: 0;
+        }
+
+        /* Navbar */
+        .progress-navbar {
+            height: 72px;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 1px solid #e6ddeb;
+            box-shadow: 0 3px 15px rgba(48, 33, 65, 0.06);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .navbar-brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: #4b267f;
+        }
+
+        .dashboard-link {
+            color: #4b267f;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px 16px;
+            border-radius: 9px;
+            background: #f0eafa;
+            transition: all 0.2s ease;
+        }
+
+        .dashboard-link:hover {
+            background: #e5d9f3;
+            transform: translateY(-1px);
+        }
+
+        /* Main */
+        .progress-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px 60px;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 8px;
+            color: #3d1f69;
+            font-size: 34px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: #756b7d;
+            font-size: 15px;
+        }
+
+        /* Loading */
+        #loading {
+            color: #756b7d;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e8dff0;
+        }
+
+        /* Main Cards */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 22px;
+            margin-bottom: 22px;
+        }
+
+        .progress-card {
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #e8dff0;
+            box-shadow: 0 8px 25px rgba(48, 33, 65, 0.07);
+        }
+
+        .card-title {
+            margin: 0 0 22px;
+            color: #4b267f;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        /* Readiness */
+        .readiness-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .readiness-circle {
+            width: 150px;
+            height: 150px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: #f0eafa;
+            border: 8px solid #e2d5ef;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .readiness-circle strong {
+            font-size: 36px;
+            color: #4b267f;
+            font-weight: 800;
+        }
+
+        .readiness-circle span {
+            color: #756b7d;
+            font-size: 13px;
+            margin-top: 2px;
+        }
+
+        .readiness-message h3 {
+            margin: 0;
+            color: #3d1f69;
+            font-size: 21px;
+        }
+
+        .readiness-message p {
+            color: #756b7d;
+            line-height: 1.7;
+            margin: 9px 0 0;
+            font-size: 14px;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .stat-box {
+            background: #faf7fc;
+            padding: 18px;
+            border-radius: 11px;
+            border: 1px solid #eee5f3;
+        }
+
+        .stat-box h3 {
+            margin: 0 0 5px;
+            color: #4b267f;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .stat-box p {
+            margin: 0;
+            color: #756b7d;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* Next Steps */
+        .next-steps {
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #e8dff0;
+            box-shadow: 0 8px 25px rgba(48, 33, 65, 0.07);
+        }
+
+        .next-steps h2 {
+            margin: 0;
+            color: #4b267f;
+            font-size: 20px;
+        }
+
+        .next-steps-description {
+            color: #756b7d;
+            line-height: 1.7;
+            margin: 10px 0 0;
+            font-size: 14px;
+        }
+
+        /* Actions */
+        .progress-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .progress-btn {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4b267f, #7043a4);
+            color: #ffffff;
+            box-shadow: 0 7px 17px rgba(75, 38, 127, 0.16);
+            transition: transform 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        .progress-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(75, 38, 127, 0.20);
+        }
+
+        .progress-btn.secondary {
+            background: #eee8f3;
+            color: #4b267f;
+            box-shadow: none;
+        }
+
+        .progress-btn.secondary:hover {
+            background: #e4daec;
+        }
+
+        /* Mobile */
+        @media (max-width: 750px) {
+
+            .progress-navbar {
+                padding: 0 18px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .dashboard-link {
+                padding: 9px 11px;
+                font-size: 13px;
+            }
+
+            .progress-container {
+                margin-top: 28px;
+                padding: 0 12px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .progress-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .readiness-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .readiness-message {
+                text-align: center;
+            }
+
+            .progress-card,
+            .next-steps {
+                padding: 22px 18px;
+            }
+
+            .progress-actions {
+                flex-direction: column;
+            }
+
+            .progress-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="progress-navbar">
+
+    <a href="../dashboard.html" class="navbar-brand">
+
+        <img
+            src="../assets/placementprep-logo.jpg"
+            alt="PlacementPrep Logo">
+
+        <span class="brand-name">
+            PlacementPrep
+        </span>
+
+    </a>
+
+    <a
+        class="dashboard-link"
+        href="../dashboard.html">
+        ← Dashboard
+    </a>
+
+</nav>
+
+
+<!-- Main Content -->
+<main class="progress-container">
+
+    <div class="page-header">
+
+        <h1>
+            My Progress 📊
+        </h1>
+
+        <p class="subtitle">
+            Track your actual placement preparation performance.
+        </p>
+
+    </div>
+
+
+    <!-- Loading -->
+    <div id="loading">
+        Loading progress...
+    </div>
+
+
+    <!-- Progress Area -->
+    <div
+        id="progressArea"
+        style="display:none;">
+
+        <!-- Top Cards -->
+        <div class="progress-grid">
+
+            <!-- Readiness -->
+            <div class="progress-card">
+
+                <h2 class="card-title">
+                    Placement Readiness
+                </h2>
+
+                <div class="readiness-content">
+
+                    <div class="readiness-circle">
+
+                        <strong id="readiness">
+                            0%
+                        </strong>
+
+                        <span>
+                            Readiness
+                        </span>
+
+                    </div>
+
+
+                    <div class="readiness-message">
+
+                        <h3>
+                            Keep going! 🚀
+                        </h3>
+
+                        <p>
+                            Your readiness is calculated from
+                            your completed tests. Keep practicing
+                            to improve your overall placement score.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Activity -->
+            <div class="progress-card">
+
+                <h2 class="card-title">
+                    Activity
+                </h2>
+
+                <div class="stats-grid">
+
+                    <div class="stat-box">
+
+                        <h3 id="tests">
+                            0
+                        </h3>
+
+                        <p>
+                            Tests Completed
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <h3 id="score">
+                            0
+                        </h3>
+
+                        <p>
+                            Total Score
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <h3 id="marks">
+                            0
+                        </h3>
+
+                        <p>
+                            Total Marks
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <h3 id="average">
+                            0%
+                        </h3>
+
+                        <p>
+                            Average
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Next Steps -->
+        <div class="next-steps">
+
+            <h2>
+                Next Steps 🎯
+            </h2>
+
+            <p class="next-steps-description">
+
+                Keep taking mock tests, solve coding problems,
+                and practice technical and HR interviews to
+                improve your placement readiness.
+
+            </p>
+
+
+            <div class="progress-actions">
+
+                <a
+                    class="progress-btn"
+                    href="../tests/tests.html">
+                    Take a Test
+                </a>
+
+                <a
+                    class="progress-btn secondary"
+                    href="../coding/coding.html">
+                    Coding Practice
+                </a>
+
+                <a
+                    class="progress-btn secondary"
+                    href="../interviews/interviews.html">
+                    Interview Practice
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+async function loadProgress() {
+
+    try {
+
+        const response =
+            await fetch(
+                "http://localhost:3000/api/tests/progress",
+                {
+                    credentials: "include"
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!result.success) {
+
+            document.getElementById("loading")
+                .textContent =
+                "Please login to view progress.";
+
+            return;
+        }
+
+
+        const data =
+            result.progress;
+
+
+        document.getElementById("loading")
+            .style.display = "none";
+
+
+        document.getElementById("progressArea")
+            .style.display = "block";
+
+
+        /* Readiness */
+        document.getElementById("readiness")
+            .textContent =
+            data.readiness + "%";
+
+
+        /* Tests Completed */
+        document.getElementById("tests")
+            .textContent =
+            data.tests_completed;
+
+
+        /* Total Score */
+        document.getElementById("score")
+            .textContent =
+            data.total_score;
+
+
+        /* Total Marks */
+        document.getElementById("marks")
+            .textContent =
+            data.total_marks;
+
+
+        /* Average */
+        const average =
+            data.total_marks > 0
+                ? Math.round(
+                    (data.total_score /
+                    data.total_marks) * 100
+                )
+                : 0;
+
+
+        document.getElementById("average")
+            .textContent =
+            average + "%";
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("loading")
+            .textContent =
+            "Unable to connect to server.";
+
+    }
+
+}
+
+
+loadProgress();
+
+</script>
+
+</body>
+</html>

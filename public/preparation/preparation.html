@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Preparation Hub | PlacementPrep</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+        body {
+            background: #f7f2ea;
+            margin: 0;
+        }
+
+        /* Navbar */
+        .preparation-navbar {
+            height: 72px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 1px solid #e6ddeb;
+            box-shadow: 0 3px 15px rgba(48, 33, 65, 0.06);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .navbar-brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: #4b267f;
+        }
+
+        .dashboard-link {
+            color: #4b267f;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px 16px;
+            border-radius: 9px;
+            background: #f0eafa;
+            transition: all 0.2s ease;
+        }
+
+        .dashboard-link:hover {
+            background: #e5d9f3;
+            transform: translateY(-1px);
+        }
+
+        /* Main Container */
+        .preparation-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px 60px;
+        }
+
+        /* Header */
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 9px;
+            color: #3d1f69;
+            font-size: 34px;
+            font-weight: 800;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: #756b7d;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Subject Grid */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        /* Subject Card */
+        .subject-card {
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #e8dff0;
+            box-shadow: 0 8px 25px rgba(48, 33, 65, 0.07);
+            transition: transform 0.2s ease,
+                        box-shadow 0.2s ease,
+                        border-color 0.2s ease;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            border-color: #d8c5e8;
+            box-shadow: 0 14px 32px rgba(48, 33, 65, 0.11);
+        }
+
+        /* Icon */
+        .subject-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0eafa;
+            border-radius: 14px;
+            font-size: 29px;
+            margin-bottom: 18px;
+        }
+
+        .subject-card h2 {
+            margin: 0 0 10px;
+            color: #3d1f69;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        .subject-card p {
+            margin: 0 0 20px;
+            color: #756b7d;
+            font-size: 14px;
+            line-height: 1.65;
+            min-height: 68px;
+        }
+
+        /* Buttons */
+        .subject-btn {
+            display: inline-block;
+            padding: 10px 17px;
+            background: linear-gradient(135deg, #4b267f, #7043a4);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 6px 15px rgba(75, 38, 127, 0.15);
+            transition: transform 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        .subject-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 9px 20px rgba(75, 38, 127, 0.20);
+        }
+
+        /* Mobile / Tablet */
+        @media (max-width: 900px) {
+            .subjects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .preparation-navbar {
+                padding: 0 18px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .dashboard-link {
+                padding: 9px 11px;
+                font-size: 13px;
+            }
+
+            .preparation-container {
+                margin-top: 28px;
+                padding: 0 12px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .subject-card {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="preparation-navbar">
+
+    <a href="../dashboard.html" class="navbar-brand">
+
+        <img
+            src="../assets/placementprep-logo.jpg"
+            alt="PlacementPrep Logo">
+
+        <span class="brand-name">
+            PlacementPrep
+        </span>
+
+    </a>
+
+    <a
+        class="dashboard-link"
+        href="../dashboard.html">
+        ← Dashboard
+    </a>
+
+</nav>
+
+
+<!-- Main Content -->
+<main class="preparation-container">
+
+    <div class="page-header">
+
+        <h1>
+            Preparation Hub 📚
+        </h1>
+
+        <p>
+            Build strong fundamentals and prepare for every stage of placement.
+        </p>
+
+    </div>
+
+
+    <!-- Subjects -->
+    <div class="subjects-grid">
+
+        <!-- Aptitude -->
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🧠
+            </div>
+
+            <h2>
+                Aptitude
+            </h2>
+
+            <p>
+                Quantitative aptitude, logical reasoning and verbal ability.
+            </p>
+
+            <a
+                class="subject-btn"
+                href="../tests/tests.html">
+                Practice
+            </a>
+
+        </div>
+
+
+        <!-- Programming -->
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                💻
+            </div>
+
+            <h2>
+                Programming
+            </h2>
+
+            <p>
+                Learn programming concepts and solve coding problems.
+            </p>
+
+            <a
+                class="subject-btn"
+                href="../coding/coding.html">
+                Start
+            </a>
+
+        </div>
+
+
+        <!-- DSA -->
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🧩
+            </div>
+
+            <h2>
+                Data Structures & Algorithms
+            </h2>
+
+            <p>
+                Arrays, strings, linked lists, trees, graphs and algorithms.
+            </p>
+
+            <a
+                class="subject-btn"
+                href="#">
+                Explore
+            </a>
+
+        </div>
+
+
+        <!-- DBMS -->
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🗄️
+            </div>
+
+            <h2>
+                DBMS
+            </h2>
+
+            <p>
+                SQL, normalization, transactions, keys and database concepts.
+            </p>
+
+            <a
+                class="subject-btn"
+                href="#">
+                Explore
+            </a>
+
+        </div>
+
+
+        <!-- Operating Systems -->
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                ⚙️
+            </div>
+
+            <h2>
+                Operating Systems
+            </h2>
+
+            <p>
+                Processes, threads, memory management, scheduling and more.
+            </p>
+
+            <a
+                class="subject-btn"
+                href="#">
+                Explore
+            </a>
+
+        </div>
+
+
+        <!-- Computer Networks -->
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🌐
+            </div>
+
+            <h2>
+                Computer Networks
+            </h2>
+
+            <p>
+                OSI, TCP/IP, HTTP, DNS, routing and networking fundamentals.
+            </p>
+
+            <a
+                class="subject-btn"
+                href="#">
+                Explore
+            </a>
+
+        </div>
+
+
+        <!-- OOP -->
+        <div class="subject-card">
+
+            <div class="subject-icon">
+                🔷
+            </div>
+
+            <h2>
+                OOP
+            </h2>
+
+            <p>
+                Classes, objects, inheritance, polymorphism and abstraction.
+            </p>
+
+            <a
+                class="subject-btn"
+                href="#">
+                Explore
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

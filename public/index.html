@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PlacementPrep | Prepare. Practice. Get Placed.</title>
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
+
+    <!-- PlacementPrep Favicon -->
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="assets/placementprep-logo.jpg"
+    >
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fffaf4;
+            color: #251c2b;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           MAIN PAGE
+        ===================================================== */
+
+        .page {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+           LEFT PANEL
+        ===================================================== */
+
+        .left-panel {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #eadcfb 0%,
+                    #e6d3f7 45%,
+                    #f5ddd0 100%
+                );
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+
+            padding: 0 28px 28px;
+        }
+
+
+        .left-panel::before {
+            content: "";
+
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(108, 55, 182, 0.10);
+
+            left: -160px;
+            top: -180px;
+        }
+
+
+        .left-panel::after {
+            content: "";
+
+            position: absolute;
+
+            width: 340px;
+            height: 340px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 143, 83, 0.13);
+
+            right: -120px;
+            bottom: -110px;
+        }
+
+
+        /* =====================================================
+           LEFT BRAND
+        ===================================================== */
+
+        .brand-logo {
+            position: absolute;
+
+            top: 32px;
+            left: 35px;
+
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .brand-logo img {
+            width: 64px;
+            height: 64px;
+
+            object-fit: cover;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 10px 25px
+                rgba(75, 38, 127, 0.16);
+        }
+
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .brand-text strong {
+            font-size: 25px;
+            font-weight: 800;
+
+            color: #261d2c;
+        }
+
+
+        .brand-text strong span {
+            color: #6b38b8;
+        }
+
+
+        .brand-text small {
+            margin-top: 2px;
+
+            font-size: 12px;
+
+            color: #776b7d;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           STUDENT IMAGE
+        ===================================================== */
+
+        .student-image {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(560px, 92%);
+
+            height: 87%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            border-radius: 34px;
+
+            box-shadow:
+                0 28px 60px
+                rgba(57, 35, 69, 0.18);
+        }
+
+
+        /* =====================================================
+           FLOATING CARDS
+        ===================================================== */
+
+        .floating-card {
+            position: absolute;
+
+            z-index: 5;
+
+            background:
+                rgba(255, 250, 245, 0.95);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.75);
+
+            box-shadow:
+                0 12px 30px
+                rgba(54, 34, 67, 0.12);
+
+            border-radius: 14px;
+
+            padding: 12px 15px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            color: #30263a;
+        }
+
+
+        .floating-icon {
+            width: 36px;
+            height: 36px;
+
+            border-radius: 10px;
+
+            background: #efe3ff;
+
+            color: #6a38b5;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 17px;
+        }
+
+
+        .card-tests {
+            top: 17%;
+            left: 8%;
+        }
+
+
+        .card-coding {
+            top: 34%;
+            right: 5%;
+        }
+
+
+        .card-interview {
+            top: 51%;
+            left: 5%;
+        }
+
+
+        .card-resume {
+            bottom: 26%;
+            right: 7%;
+        }
+
+
+        /* =====================================================
+           QUOTE
+        ===================================================== */
+
+        .quote-card {
+            position: absolute;
+
+            z-index: 5;
+
+            left: 6%;
+            bottom: 5%;
+
+            max-width: 360px;
+
+            background:
+                rgba(255, 250, 245, 0.96);
+
+            border-radius: 18px;
+
+            padding: 17px 20px;
+
+            box-shadow:
+                0 12px 30px
+                rgba(54, 34, 67, 0.12);
+
+            font-size: 14px;
+
+            line-height: 1.55;
+
+            color: #34283d;
+        }
+
+
+        .quote-symbol {
+            color: #7041be;
+
+            font-size: 31px;
+
+            line-height: 1;
+        }
+
+
+        .quote-card strong {
+            color: #713bc0;
+        }
+
+
+        /* =====================================================
+           RIGHT PANEL
+        ===================================================== */
+
+        .right-panel {
+            min-height: 100vh;
+
+            background: #fffaf4;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                42px
+                clamp(30px, 5vw, 80px);
+        }
+
+
+        .content {
+            width: 100%;
+
+            max-width: 560px;
+        }
+
+
+        /* =====================================================
+           RIGHT BRAND
+        ===================================================== */
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 52px;
+        }
+
+
+        .brand img {
+            width: 58px;
+            height: 58px;
+
+            object-fit: cover;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 10px 22px
+                rgba(102, 52, 183, 0.16);
+        }
+
+
+        .brand-name {
+            display: block;
+
+            font-size: 21px;
+
+            font-weight: 800;
+
+            letter-spacing: -0.5px;
+        }
+
+
+        .brand-name span {
+            color: #703abd;
+        }
+
+
+        .brand-tagline {
+            display: block;
+
+            color: #8e8190;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           LABEL
+        ===================================================== */
+
+        .welcome-label {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            background: #eee3fb;
+
+            color: #6e3ab7;
+
+            padding: 8px 12px;
+
+            border-radius: 40px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.35px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .welcome-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #ff8b4d;
+        }
+
+
+        /* =====================================================
+           HEADLINE
+        ===================================================== */
+
+        h1 {
+            font-size:
+                clamp(42px, 4.3vw, 64px);
+
+            line-height: 1.03;
+
+            letter-spacing: -2.4px;
+
+            color: #241b2d;
+
+            margin-bottom: 20px;
+        }
+
+
+        h1 span {
+            color: #713bc0;
+        }
+
+
+        .description {
+            color: #776b7e;
+
+            font-size: 16px;
+
+            line-height: 1.75;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* =====================================================
+           SECTION TITLE
+        ===================================================== */
+
+        .start-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .line {
+            flex: 1;
+
+            height: 1px;
+
+            background: #dfd4dc;
+        }
+
+
+        .start-text {
+            color: #33273b;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           AUTH BUTTONS
+        ===================================================== */
+
+        .auth-buttons {
+            display: grid;
+
+            gap: 12px;
+        }
+
+
+        .auth-button {
+            min-height: 60px;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            transition: 0.25s;
+        }
+
+
+        .login-button {
+            background:
+                linear-gradient(
+                    135deg,
+                    #6532b7,
+                    #8247d2
+                );
+
+            color: white;
+
+            box-shadow:
+                0 12px 25px
+                rgba(101, 50, 183, 0.22);
+        }
+
+
+        .login-button:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 17px 32px
+                rgba(101, 50, 183, 0.28);
+        }
+
+
+        .create-button {
+            background: #fffaf4;
+
+            color: #2d2531;
+
+            border:
+                1px solid #ddd4da;
+
+            box-shadow:
+                0 5px 15px
+                rgba(40, 28, 47, 0.03);
+        }
+
+
+        .create-button:hover {
+            border-color: #cbbbcf;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .button-icon {
+            font-size: 20px;
+        }
+
+
+        .create-button .button-icon {
+            color: #ff8b32;
+        }
+
+
+        /* =====================================================
+           SECURITY
+        ===================================================== */
+
+        .security {
+            margin-top: 18px;
+
+            padding: 14px 16px;
+
+            border:
+                1px solid #d9ecd0;
+
+            background: #f1faed;
+
+            border-radius: 11px;
+
+            color: #37702d;
+
+            text-align: center;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           SOCIAL PROOF
+        ===================================================== */
+
+        .social-proof {
+            margin-top: 32px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+        }
+
+
+        .avatars {
+            display: flex;
+        }
+
+
+        .avatar {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 50%;
+
+            border:
+                3px solid #fffaf4;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e3d4f4,
+                    #f2cbb9
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            color: #50365b;
+
+            margin-left: -8px;
+        }
+
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+
+        .proof-divider {
+            width: 1px;
+
+            height: 38px;
+
+            background: #ddd4da;
+        }
+
+
+        .stars {
+            color: #ef8b35;
+
+            font-size: 14px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .proof-text {
+            color: #7d7180;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        .proof-text strong {
+            color: #6735b7;
+        }
+
+
+        /* =====================================================
+           BENEFITS
+        ===================================================== */
+
+        .benefits {
+            margin-top: 36px;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid #ded5db;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+        }
+
+
+        .benefit {
+            font-size: 10px;
+
+            font-weight: 800;
+
+            color: #645766;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .benefit-icon {
+            width: 30px;
+            height: 30px;
+
+            flex-shrink: 0;
+
+            border-radius: 9px;
+
+            background: #f0e6fa;
+
+            color: #6c3db4;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .page {
+                grid-template-columns: 1fr;
+            }
+
+
+            .left-panel {
+                min-height: 600px;
+            }
+
+
+            .right-panel {
+                min-height: auto;
+
+                padding:
+                    70px 30px;
+            }
+
+
+            .student-image {
+                height: 570px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .left-panel {
+                min-height: 460px;
+
+                padding:
+                    0 15px 20px;
+            }
+
+
+            .brand-logo {
+                top: 20px;
+                left: 20px;
+            }
+
+
+            .brand-logo img {
+                width: 50px;
+                height: 50px;
+            }
+
+
+            .brand-text strong {
+                font-size: 20px;
+            }
+
+
+            .brand-text small {
+                font-size: 10px;
+            }
+
+
+            .student-image {
+                height: 390px;
+            }
+
+
+            .floating-card {
+                display: none;
+            }
+
+
+            .quote-card {
+                left: 5%;
+
+                right: 5%;
+
+                max-width: none;
+
+                bottom: 4%;
+            }
+
+
+            .right-panel {
+                padding:
+                    50px 22px;
+            }
+
+
+            .brand {
+                margin-bottom: 38px;
+            }
+
+
+            .benefits {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =====================================================
+         LEFT SIDE
+    ====================================================== -->
+
+    <section class="left-panel">
+
+
+        <!-- LEFT BRAND -->
+
+        <div class="brand-logo">
+
+            <img
+                src="assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo"
+            >
+
+            <div class="brand-text">
+
+                <strong>
+                    Placement<span>Prep</span>
+                </strong>
+
+                <small>
+                    Prepare. Practice. Get Placed.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- STUDENT -->
+
+        <img
+            src="assets/student.jpg"
+            alt="Engineering student preparing for placements"
+            class="student-image"
+        >
+
+
+        <!-- MOCK TESTS -->
+
+        <div class="floating-card card-tests">
+
+            <div class="floating-icon">
+                📝
+            </div>
+
+            <span>
+                Mock Tests
+            </span>
+
+        </div>
+
+
+        <!-- CODING -->
+
+        <div class="floating-card card-coding">
+
+            <div class="floating-icon">
+                &lt;/&gt;
+            </div>
+
+            <span>
+                Coding Practice
+            </span>
+
+        </div>
+
+
+        <!-- INTERVIEW -->
+
+        <div class="floating-card card-interview">
+
+            <div class="floating-icon">
+                🎤
+            </div>
+
+            <span>
+                Interview Prep
+            </span>
+
+        </div>
+
+
+        <!-- RESUME -->
+
+        <div class="floating-card card-resume">
+
+            <div class="floating-icon">
+                📄
+            </div>
+
+            <span>
+                Resume Builder
+            </span>
+
+        </div>
+
+
+        <!-- QUOTE -->
+
+        <div class="quote-card">
+
+            <div class="quote-symbol">
+                “
+            </div>
+
+            Your today's preparation builds your
+            <strong>
+                tomorrow's success.
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RIGHT SIDE
+    ====================================================== -->
+
+    <section class="right-panel">
+
+
+        <div class="content">
+
+
+            <!-- RIGHT BRAND -->
+
+            <div class="brand">
+
+                <img
+                    src="assets/placementprep-logo.jpg"
+                    alt="PlacementPrep Logo"
+                >
+
+                <div>
+
+                    <strong class="brand-name">
+                        Placement<span>Prep</span>
+                    </strong>
+
+                    <small class="brand-tagline">
+                        Prepare. Practice. Get Placed.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- LABEL -->
+
+            <div class="welcome-label">
+
+                <span class="welcome-dot"></span>
+
+                PLACEMENT PREPARATION PLATFORM
+
+            </div>
+
+
+            <!-- HEADING -->
+
+            <h1>
+
+                Welcome to
+                <span>
+                    PlacementPrep!
+                </span>
+                👋
+
+            </h1>
+
+
+            <!-- DESCRIPTION -->
+
+            <p class="description">
+
+                Your all-in-one platform to prepare for
+                placements with tests, coding practice,
+                technical &amp; HR interviews, resume building
+                and progress tracking.
+
+            </p>
+
+
+            <!-- START -->
+
+            <div class="start-title">
+
+                <div class="line"></div>
+
+                <span class="start-text">
+                    Let's get started
+                </span>
+
+                <div class="line"></div>
+
+            </div>
+
+
+            <!-- AUTH BUTTONS -->
+
+            <div class="auth-buttons">
+
+
+                <a
+                    href="login.html"
+                    class="auth-button login-button"
+                >
+
+                    <span class="button-icon">
+                        ♙
+                    </span>
+
+                    Login to your account
+
+                </a>
+
+
+                <a
+                    href="register.html"
+                    class="auth-button create-button"
+                >
+
+                    <span class="button-icon">
+                        ♙+
+                    </span>
+
+                    Create new account
+
+                </a>
+
+
+            </div>
+
+
+            <!-- SECURITY -->
+
+            <div class="security">
+
+                🛡 Secure
+                &nbsp; • &nbsp;
+                Simple
+                &nbsp; • &nbsp;
+                Student Friendly
+
+            </div>
+
+
+            <!-- SOCIAL PROOF -->
+
+            <div class="social-proof">
+
+
+                <div class="avatars">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <div class="avatar">
+                        R
+                    </div>
+
+                    <div class="avatar">
+                        S
+                    </div>
+
+                    <div class="avatar">
+                        P
+                    </div>
+
+                </div>
+
+
+                <div class="proof-divider"></div>
+
+
+                <div>
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <div class="proof-text">
+
+                        Built for engineering students
+                        preparing to
+                        <strong>
+                            get placed.
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- BENEFITS -->
+
+            <div class="benefits">
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ✓
+                    </div>
+
+                    Comprehensive
+                    Preparation
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ↗
+                    </div>
+
+                    Track Your
+                    Progress
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ◈
+                    </div>
+
+                    Expert-curated
+                    Content
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ◎
+                    </div>
+
+                    Placement
+                    Focused
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+</body>
+
+</html>

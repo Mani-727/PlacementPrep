@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HR Interview | PlacementPrep</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+        body {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* Navbar */
+        .interview-navbar {
+            height: 76px;
+            background: var(--surface);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .back-btn {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 16px;
+            border-radius: 10px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--surface-2, #f0e8ff);
+            transform: translateX(-2px);
+        }
+
+        /* Main */
+        .interview-container {
+            max-width: 950px;
+            margin: 45px auto;
+            padding: 0 22px 50px;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            color: var(--primary);
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Questions */
+        .question {
+            background: var(--surface);
+            padding: 25px;
+            border-radius: 18px;
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(75, 38, 127, 0.10);
+        }
+
+        .question h3 {
+            color: var(--text);
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 13px;
+        }
+
+        .meta {
+            display: inline-block;
+            color: var(--primary);
+            background: #f0e8ff;
+            padding: 6px 11px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Answer Button */
+        .answer-btn {
+            background: linear-gradient(135deg, var(--primary), #7b4ab8);
+            color: white;
+            border: none;
+            padding: 10px 17px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .answer-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px rgba(75, 38, 127, 0.22);
+        }
+
+        /* Suggested Answer */
+        .answer {
+            display: none;
+            margin-top: 16px;
+            padding: 17px;
+            background: #fff7ed;
+            border-left: 4px solid var(--accent);
+            border-radius: 10px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Status */
+        #status {
+            text-align: center;
+            color: var(--muted);
+            margin-top: 30px;
+            padding: 15px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            .interview-navbar {
+                padding: 0 18px;
+                height: 68px;
+            }
+
+            .brand img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+            .interview-container {
+                margin-top: 30px;
+                padding: 0 15px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .question {
+                padding: 19px;
+                border-radius: 15px;
+            }
+
+            .question h3 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="interview-navbar">
+
+        <div class="brand">
+
+            <img
+                src="../assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo"
+            >
+
+            <span class="brand-name">
+                PlacementPrep
+            </span>
+
+        </div>
+
+        <a href="interviews.html" class="back-btn">
+            ← Interviews
+        </a>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="interview-container">
+
+        <div class="page-header">
+
+            <h1>HR Interview 🧑‍💼</h1>
+
+            <p class="subtitle">
+                Practice HR interview questions and prepare
+                confident answers for your placement interviews.
+            </p>
+
+        </div>
+
+
+        <div id="questions"></div>
+
+        <div id="status">
+            Loading questions...
+        </div>
+
+    </main>
+
+
+    <script>
+
+        async function loadQuestions() {
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:3000/api/interviews"
+                );
+
+                const result = await response.json();
+
+                const container =
+                    document.getElementById("questions");
+
+                const status =
+                    document.getElementById("status");
+
+
+                if (!result.success) {
+
+                    status.textContent =
+                        "Unable to load interview questions.";
+
+                    return;
+                }
+
+
+                const hrQuestions =
+                    result.questions.filter(
+                        item => item.category === "HR"
+                    );
+
+
+                if (hrQuestions.length === 0) {
+
+                    status.textContent =
+                        "No HR questions available yet.";
+
+                    return;
+                }
+
+
+                container.innerHTML = "";
+
+
+                hrQuestions.forEach((item, index) => {
+
+                    container.innerHTML += `
+
+                        <div class="question">
+
+                            <h3>
+                                ${index + 1}. ${item.question}
+                            </h3>
+
+                            <div class="meta">
+                                Difficulty: ${item.difficulty}
+                            </div>
+
+                            <br>
+
+                            <button
+                                class="answer-btn"
+                                onclick="toggleAnswer(${index})">
+
+                                Show Suggested Answer
+
+                            </button>
+
+                            <div
+                                class="answer"
+                                id="answer${index}">
+
+                                ${item.answer}
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                });
+
+
+                status.textContent =
+                    `${hrQuestions.length} HR questions available.`;
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                document.getElementById("status").textContent =
+                    "Unable to connect to server.";
+
+            }
+
+        }
+
+
+        function toggleAnswer(index) {
+
+            const answer =
+                document.getElementById("answer" + index);
+
+            const button =
+                answer.previousElementSibling;
+
+
+            if (answer.style.display === "block") {
+
+                answer.style.display = "none";
+
+                button.textContent =
+                    "Show Suggested Answer";
+
+            } else {
+
+                answer.style.display = "block";
+
+                button.textContent =
+                    "Hide Suggested Answer";
+
+            }
+
+        }
+
+
+        loadQuestions();
+
+    </script>
+
+</body>
+</html>

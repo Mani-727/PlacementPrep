@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | PlacementPrep</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+        /* ================================
+           PROFILE PAGE
+        ================================= */
+
+        .profile-page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            gap: 20px;
+        }
+
+        .profile-header h1 {
+            margin: 0 0 6px;
+            font-size: 30px;
+        }
+
+        .profile-header p {
+            margin: 0;
+            color: #777;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 10px;
+            padding: 11px 18px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #6b2d5c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #552148;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #f0e8f0;
+            color: #6b2d5c;
+        }
+
+        .btn-secondary:hover {
+            background: #e7dce7;
+        }
+
+        /* Profile top card */
+
+        .profile-overview {
+            background: linear-gradient(135deg, #6b2d5c, #8d4a7c);
+            border-radius: 18px;
+            padding: 28px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(107, 45, 92, 0.16);
+        }
+
+        .profile-overview-left {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .profile-photo-wrapper {
+            position: relative;
+            width: 105px;
+            height: 105px;
+            flex-shrink: 0;
+        }
+
+        .profile-photo {
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #f6efe7;
+            border: 4px solid rgba(255,255,255,0.85);
+        }
+
+        .photo-edit-btn {
+            position: absolute;
+            right: -2px;
+            bottom: 2px;
+            width: 34px;
+            height: 34px;
+            border: 3px solid white;
+            border-radius: 50%;
+            background: #f39a42;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .profile-overview h2 {
+            margin: 0 0 7px;
+            font-size: 24px;
+        }
+
+        .profile-overview p {
+            margin: 4px 0;
+            opacity: 0.9;
+        }
+
+        .profile-overview-right {
+            min-width: 230px;
+        }
+
+        .completion-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .completion-bar {
+            height: 9px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .completion-fill {
+            height: 100%;
+            width: 0%;
+            background: #f7b267;
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+
+        /* Cards */
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .profile-card {
+            background: #fffaf5;
+            border: 1px solid #eadfd6;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 5px 16px rgba(80, 40, 60, 0.05);
+        }
+
+        .profile-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 13px;
+            border-bottom: 1px solid #eadfd6;
+        }
+
+        .card-title-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 9px;
+            background: #eee2ed;
+            color: #6b2d5c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+        }
+
+        .card-title h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #3d2635;
+        }
+
+        .card-title p {
+            margin: 2px 0 0;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Form */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 17px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #513c49;
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: #d85a5a;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 11px 13px;
+            border: 1px solid #d9ccc5;
+            border-radius: 9px;
+            background: white;
+            color: #3e3038;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #8d4a7c;
+            box-shadow: 0 0 0 3px rgba(141, 74, 124, 0.10);
+        }
+
+        .form-group input:disabled {
+            background: #f1ece8;
+            color: #777;
+            cursor: not-allowed;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 105px;
+        }
+
+        .field-hint {
+            margin-top: 5px;
+            color: #888;
+            font-size: 11px;
+        }
+
+        /* Upload */
+
+        .upload-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px;
+            border: 1px dashed #cdbbc5;
+            border-radius: 10px;
+            background: #fdf9f6;
+        }
+
+        .upload-area button {
+            border: 1px solid #6b2d5c;
+            background: white;
+            color: #6b2d5c;
+            border-radius: 8px;
+            padding: 8px 13px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .upload-area button:hover {
+            background: #f4eaf2;
+        }
+
+        .file-name {
+            color: #777;
+            font-size: 12px;
+        }
+
+        /* Toast */
+
+        .toast {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            padding: 13px 18px;
+            background: #3f2938;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+            transform: translateY(100px);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+            z-index: 9999;
+            font-size: 14px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            border-left: 4px solid #6fcf97;
+        }
+
+        .toast.error {
+            border-left: 4px solid #eb6a6a;
+        }
+
+        /* Loading */
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #777;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 900px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card.full-width {
+                grid-column: auto;
+            }
+
+            .profile-overview {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-overview-right {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .profile-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-actions {
+                width: 100%;
+            }
+
+            .profile-actions .btn {
+                flex: 1;
+            }
+
+            .profile-overview-left {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .profile-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <img
+                    src="../assets/placementprep-logo.jpg"
+                    alt="PlacementPrep Logo"
+                    class="logo-image"
+                >
+
+                <div class="logo-text">
+                    <strong>PlacementPrep</strong>
+                    <span>Career Readiness</span>
+                </div>
+            </div>
+
+            <button class="sidebar-close" id="sidebarClose">
+                ×
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="sidebar-section-title">
+                MAIN
+            </div>
+
+            <a href="../dashboard.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="../preparation/preparation.html" class="nav-link">
+                <span class="nav-icon">📚</span>
+                <span>Preparation</span>
+            </a>
+
+            <a href="../tests/tests.html" class="nav-link">
+                <span class="nav-icon">📝</span>
+                <span>Mock Tests</span>
+            </a>
+
+            <a href="../coding/coding.html" class="nav-link">
+                <span class="nav-icon">💻</span>
+                <span>Coding Practice</span>
+            </a>
+
+            <a href="../companies/companies.html" class="nav-link">
+                <span class="nav-icon">🏢</span>
+                <span>Companies</span>
+            </a>
+
+            <a href="../interviews/interviews.html" class="nav-link">
+                <span class="nav-icon">🎤</span>
+                <span>Interviews</span>
+            </a>
+
+            <div class="sidebar-section-title">
+                CAREER
+            </div>
+
+            <a href="../resume/resume-builder.html" class="nav-link">
+                <span class="nav-icon">📄</span>
+                <span>Resume Builder</span>
+            </a>
+
+            <a href="../progress/progress.html" class="nav-link">
+                <span class="nav-icon">📊</span>
+                <span>My Progress</span>
+            </a>
+
+            <a href="../progress/leaderboard.html" class="nav-link">
+                <span class="nav-icon">🏆</span>
+                <span>Leaderboard</span>
+            </a>
+
+            <div class="sidebar-section-title">
+                ACCOUNT
+            </div>
+
+            <a href="profile.html" class="nav-link active">
+                <span class="nav-icon">👤</span>
+                <span>My Profile</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="logout-btn" id="logoutBtn">
+                <span class="nav-icon">↪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- Sidebar mobile/open button -->
+
+    <button class="sidebar-open" id="sidebarOpen">
+        ☰
+    </button>
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <div class="profile-page">
+
+            <!-- Header -->
+
+            <div class="profile-header">
+
+                <div>
+                    <h1>My Profile</h1>
+                    <p>Manage your personal, academic and career information.</p>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="btn btn-secondary" id="resetBtn">
+                        Reset
+                    </button>
+
+                    <button class="btn btn-primary" id="saveBtn">
+                        Save Changes
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- ================= PROFILE OVERVIEW ================= -->
+
+            <section class="profile-overview">
+
+                <div class="profile-overview-left">
+
+                    <div class="profile-photo-wrapper">
+
+                        <img
+                            id="profilePhoto"
+                            class="profile-photo"
+                            src="../assets/student.jpg"
+                            alt="Profile Photo"
+                        >
+
+                        <button
+                            type="button"
+                            class="photo-edit-btn"
+                            id="photoEditBtn"
+                            title="Change profile picture"
+                        >
+                            ✎
+                        </button>
+
+                    </div>
+
+                    <div>
+
+                        <h2 id="profileName">
+                            Student
+                        </h2>
+
+                        <p id="profileAcademic">
+                            Engineering Student
+                        </p>
+
+                        <p id="profileEmail">
+                            —
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-overview-right">
+
+                    <div class="completion-label">
+                        <span>Profile Completion</span>
+                        <strong id="completionPercent">0%</strong>
+                    </div>
+
+                    <div class="completion-bar">
+                        <div
+                            class="completion-fill"
+                            id="completionFill"
+                        ></div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PROFILE FORM ================= -->
+
+            <form id="profileForm">
+
+                <div class="profile-grid">
+
+
+                    <!-- PERSONAL INFORMATION -->
+
+                    <section class="profile-card">
+
+                        <div class="card-title">
+
+                            <div class="card-title-icon">
+                                👤
+                            </div>
+
+                            <div>
+                                <h3>Personal Information</h3>
+                                <p>Your basic personal details</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Full Name <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="full_name"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Email</label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    disabled
+                                >
+
+                                <span class="field-hint">
+                                    Email cannot be changed here.
+                                </span>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Mobile Number</label>
+
+                                <input
+                                    type="tel"
+                                    id="mobile"
+                                    placeholder="e.g. 9876543210"
+                                    maxlength="15"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Date of Birth</label>
+
+                                <input
+                                    type="date"
+                                    id="date_of_birth"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Gender</label>
+
+                                <select id="gender">
+
+                                    <option value="">
+                                        Select gender
+                                    </option>
+
+                                    <option value="Male">
+                                        Male
+                                    </option>
+
+                                    <option value="Female">
+                                        Female
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                    <option value="Prefer not to say">
+                                        Prefer not to say
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Location</label>
+
+                                <input
+                                    type="text"
+                                    id="location"
+                                    placeholder="City, State"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ACADEMIC INFORMATION -->
+
+                    <section class="profile-card">
+
+                        <div class="card-title">
+
+                            <div class="card-title-icon">
+                                🎓
+                            </div>
+
+                            <div>
+                                <h3>Academic Information</h3>
+                                <p>Your engineering education details</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group full">
+
+                                <label>College / University</label>
+
+                                <input
+                                    type="text"
+                                    id="college"
+                                    placeholder="Enter your college name"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Branch</label>
+
+                                <select id="branch">
+
+                                    <option value="">
+                                        Select branch
+                                    </option>
+
+                                    <option value="CSE">
+                                        Computer Science & Engineering
+                                    </option>
+
+                                    <option value="CSM">
+                                        Computer Science & Machine Learning
+                                    </option>
+
+                                    <option value="CSD">
+                                        Computer Science & Data Science
+                                    </option>
+
+                                    <option value="IT">
+                                        Information Technology
+                                    </option>
+
+                                    <option value="ECE">
+                                        Electronics & Communication Engineering
+                                    </option>
+
+                                    <option value="EEE">
+                                        Electrical & Electronics Engineering
+                                    </option>
+
+                                    <option value="MECH">
+                                        Mechanical Engineering
+                                    </option>
+
+                                    <option value="CIVIL">
+                                        Civil Engineering
+                                    </option>
+
+                                    <option value="AI&DS">
+                                        Artificial Intelligence & Data Science
+                                    </option>
+
+                                    <option value="AI&ML">
+                                        Artificial Intelligence & Machine Learning
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Year</label>
+
+                                <select id="year">
+
+                                    <option value="">
+                                        Select year
+                                    </option>
+
+                                    <option value="1st Year">
+                                        1st Year
+                                    </option>
+
+                                    <option value="2nd Year">
+                                        2nd Year
+                                    </option>
+
+                                    <option value="3rd Year">
+                                        3rd Year
+                                    </option>
+
+                                    <option value="4th Year">
+                                        4th Year
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Semester</label>
+
+                                <select id="semester">
+
+                                    <option value="">
+                                        Select semester
+                                    </option>
+
+                                    <option value="1-1">1-1</option>
+                                    <option value="1-2">1-2</option>
+                                    <option value="2-1">2-1</option>
+                                    <option value="2-2">2-2</option>
+                                    <option value="3-1">3-1</option>
+                                    <option value="3-2">3-2</option>
+                                    <option value="4-1">4-1</option>
+                                    <option value="4-2">4-2</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>CGPA</label>
+
+                                <input
+                                    type="number"
+                                    id="cgpa"
+                                    placeholder="e.g. 8.06"
+                                    min="0"
+                                    max="10"
+                                    step="0.01"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Diploma / Previous Qualification</label>
+
+                                <input
+                                    type="text"
+                                    id="diploma"
+                                    placeholder="e.g. Diploma in Computer Engineering"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Graduation Year</label>
+
+                                <input
+                                    type="number"
+                                    id="graduation_year"
+                                    placeholder="e.g. 2028"
+                                    min="2020"
+                                    max="2100"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- CAREER INFORMATION -->
+
+                    <section class="profile-card full-width">
+
+                        <div class="card-title">
+
+                            <div class="card-title-icon">
+                                🚀
+                            </div>
+
+                            <div>
+                                <h3>Career Information</h3>
+                                <p>Tell us about your career goals and technical interests</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>Career Goal / Preferred Role</label>
+
+                                <select id="career_goal">
+
+                                    <option value="">
+                                        Select preferred role
+                                    </option>
+
+                                    <option value="Software Developer">
+                                        Software Developer
+                                    </option>
+
+                                    <option value="Full Stack Developer">
+                                        Full Stack Developer
+                                    </option>
+
+                                    <option value="Frontend Developer">
+                                        Frontend Developer
+                                    </option>
+
+                                    <option value="Backend Developer">
+                                        Backend Developer
+                                    </option>
+
+                                    <option value="Data Analyst">
+                                        Data Analyst
+                                    </option>
+
+                                    <option value="Data Scientist">
+                                        Data Scientist
+                                    </option>
+
+                                    <option value="AI/ML Engineer">
+                                        AI/ML Engineer
+                                    </option>
+
+                                    <option value="Cloud Engineer">
+                                        Cloud Engineer
+                                    </option>
+
+                                    <option value="Cybersecurity Engineer">
+                                        Cybersecurity Engineer
+                                    </option>
+
+                                    <option value="DevOps Engineer">
+                                        DevOps Engineer
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Preferred Programming Language</label>
+
+                                <select id="preferred_language">
+
+                                    <option value="">
+                                        Select language
+                                    </option>
+
+                                    <option value="Python">
+                                        Python
+                                    </option>
+
+                                    <option value="Java">
+                                        Java
+                                    </option>
+
+                                    <option value="C++">
+                                        C++
+                                    </option>
+
+                                    <option value="JavaScript">
+                                        JavaScript
+                                    </option>
+
+                                    <option value="C">
+                                        C
+                                    </option>
+
+                                    <option value="C#">
+                                        C#
+                                    </option>
+
+                                    <option value="Go">
+                                        Go
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>Skills</label>
+
+                                <input
+                                    type="text"
+                                    id="skills"
+                                    placeholder="e.g. HTML, CSS, JavaScript, Python, MySQL, Git"
+                                >
+
+                                <span class="field-hint">
+                                    Separate skills using commas.
+                                </span>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>GitHub Profile</label>
+
+                                <input
+                                    type="url"
+                                    id="github"
+                                    placeholder="https://github.com/username"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>LinkedIn Profile</label>
+
+                                <input
+                                    type="url"
+                                    id="linkedin"
+                                    placeholder="https://linkedin.com/in/username"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Portfolio Website</label>
+
+                                <input
+                                    type="url"
+                                    id="portfolio"
+                                    placeholder="https://yourportfolio.com"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Profile Picture</label>
+
+                                <div class="upload-area">
+
+                                    <button
+                                        type="button"
+                                        id="choosePhotoBtn"
+                                    >
+                                        Choose Photo
+                                    </button>
+
+                                    <span
+                                        class="file-name"
+                                        id="fileName"
+                                    >
+                                        JPG, PNG or WebP
+                                    </span>
+
+                                    <input
+                                        type="file"
+                                        id="photoInput"
+                                        accept="image/jpeg,image/png,image/webp"
+                                        hidden
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>About Me</label>
+
+                                <textarea
+                                    id="bio"
+                                    placeholder="Write a short introduction about yourself, your interests, goals and strengths..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <!-- Toast -->
+
+    <div class="toast" id="toast"></div>
+
+
+    <script>
+
+        const API = "http://localhost:3000";
+
+        let originalProfile = null;
+
+
+        /* =================================
+           ELEMENTS
+        ================================= */
+
+        const profileForm = document.getElementById("profileForm");
+
+        const saveBtn = document.getElementById("saveBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+        const profilePhoto = document.getElementById("profilePhoto");
+        const photoInput = document.getElementById("photoInput");
+
+        const choosePhotoBtn =
+            document.getElementById("choosePhotoBtn");
+
+        const photoEditBtn =
+            document.getElementById("photoEditBtn");
+
+        const fileName =
+            document.getElementById("fileName");
+
+        const toast =
+            document.getElementById("toast");
+
+
+        /* =================================
+           FIELD LIST
+        ================================= */
+
+        const fields = [
+            "full_name",
+            "email",
+            "mobile",
+            "date_of_birth",
+            "gender",
+            "location",
+            "college",
+            "branch",
+            "year",
+            "semester",
+            "cgpa",
+            "diploma",
+            "graduation_year",
+            "career_goal",
+            "preferred_language",
+            "skills",
+            "github",
+            "linkedin",
+            "portfolio",
+            "bio"
+        ];
+
+
+        /* =================================
+           SHOW TOAST
+        ================================= */
+
+        function showToast(message, type = "success") {
+
+            toast.textContent = message;
+
+            toast.className =
+                "toast show " + type;
+
+            setTimeout(() => {
+
+                toast.classList.remove("show");
+
+            }, 3000);
+        }
+
+
+        /* =================================
+           LOAD PROFILE
+        ================================= */
+
+        async function loadProfile() {
+
+            try {
+
+                const response = await fetch(
+                    `${API}/api/students/profile`,
+                    {
+                        credentials: "include"
+                    }
+                );
+
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+
+                    window.location.href = "../login.html";
+                    return;
+
+                }
+
+                originalProfile = {
+                    ...data.student
+                };
+
+                fillProfile(data.student);
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast(
+                    "Unable to load profile.",
+                    "error"
+                );
+
+            }
+
+        }
+
+
+        /* =================================
+           FILL PROFILE
+        ================================= */
+
+        function fillProfile(student) {
+
+            fields.forEach(field => {
+
+                const element =
+                    document.getElementById(field);
+
+                if (!element) return;
+
+                let value = student[field];
+
+                if (
+                    value === null ||
+                    value === undefined
+                ) {
+                    value = "";
+                }
+
+                if (
+                    field === "date_of_birth" &&
+                    value
+                ) {
+
+                    value =
+                        String(value).substring(0, 10);
+
+                }
+
+                element.value = value;
+
+            });
+
+
+            /* Profile picture */
+
+            if (student.profile_pic) {
+
+                profilePhoto.src =
+                    student.profile_pic;
+
+            } else {
+
+                profilePhoto.src =
+                    "../assets/student.jpg";
+
+            }
+
+
+            /* Header */
+
+            updateProfileHeader(student);
+
+            updateCompletion();
+
+        }
+
+
+        /* =================================
+           PROFILE HEADER
+        ================================= */
+
+        function updateProfileHeader(student) {
+
+            const name =
+                student.full_name ||
+                "Student";
+
+            const branch =
+                student.branch ||
+                "Engineering Student";
+
+            const year =
+                student.year || "";
+
+            const cgpa =
+                student.cgpa !== null &&
+                student.cgpa !== undefined &&
+                student.cgpa !== ""
+                    ? ` • CGPA ${student.cgpa}`
+                    : "";
+
+            document.getElementById(
+                "profileName"
+            ).textContent = name;
+
+            document.getElementById(
+                "profileAcademic"
+            ).textContent =
+                `${branch}${year ? " • " + year : ""}${cgpa}`;
+
+            document.getElementById(
+                "profileEmail"
+            ).textContent =
+                student.email || "";
+
+        }
+
+
+        /* =================================
+           PROFILE COMPLETION
+        ================================= */
+
+        function updateCompletion() {
+
+            const completionFields = [
+                "full_name",
+                "mobile",
+                "date_of_birth",
+                "gender",
+                "location",
+                "college",
+                "branch",
+                "year",
+                "semester",
+                "cgpa",
+                "diploma",
+                "graduation_year",
+                "career_goal",
+                "preferred_language",
+                "skills",
+                "github",
+                "linkedin",
+                "portfolio",
+                "bio"
+            ];
+
+            let completed = 0;
+
+            completionFields.forEach(field => {
+
+                const element =
+                    document.getElementById(field);
+
+                if (
+                    element &&
+                    element.value.trim() !== ""
+                ) {
+
+                    completed++;
+
+                }
+
+            });
+
+            const percentage =
+                Math.round(
+                    (completed /
+                        completionFields.length) *
+                    100
+                );
+
+            document.getElementById(
+                "completionPercent"
+            ).textContent =
+                `${percentage}%`;
+
+            document.getElementById(
+                "completionFill"
+            ).style.width =
+                `${percentage}%`;
+
+        }
+
+
+        /* =================================
+           GET FORM DATA
+        ================================= */
+
+        function getFormData() {
+
+            return {
+
+                full_name:
+                    document.getElementById(
+                        "full_name"
+                    ).value.trim(),
+
+                mobile:
+                    document.getElementById(
+                        "mobile"
+                    ).value.trim(),
+
+                date_of_birth:
+                    document.getElementById(
+                        "date_of_birth"
+                    ).value,
+
+                gender:
+                    document.getElementById(
+                        "gender"
+                    ).value,
+
+                college:
+                    document.getElementById(
+                        "college"
+                    ).value.trim(),
+
+                branch:
+                    document.getElementById(
+                        "branch"
+                    ).value,
+
+                year:
+                    document.getElementById(
+                        "year"
+                    ).value,
+
+                semester:
+                    document.getElementById(
+                        "semester"
+                    ).value,
+
+                cgpa:
+                    document.getElementById(
+                        "cgpa"
+                    ).value,
+
+                diploma:
+                    document.getElementById(
+                        "diploma"
+                    ).value.trim(),
+
+                graduation_year:
+                    document.getElementById(
+                        "graduation_year"
+                    ).value,
+
+                career_goal:
+                    document.getElementById(
+                        "career_goal"
+                    ).value,
+
+                preferred_language:
+                    document.getElementById(
+                        "preferred_language"
+                    ).value,
+
+                skills:
+                    document.getElementById(
+                        "skills"
+                    ).value.trim(),
+
+                github:
+                    document.getElementById(
+                        "github"
+                    ).value.trim(),
+
+                linkedin:
+                    document.getElementById(
+                        "linkedin"
+                    ).value.trim(),
+
+                portfolio:
+                    document.getElementById(
+                        "portfolio"
+                    ).value.trim(),
+
+                location:
+                    document.getElementById(
+                        "location"
+                    ).value.trim(),
+
+                bio:
+                    document.getElementById(
+                        "bio"
+                    ).value.trim()
+
+            };
+
+        }
+
+
+        /* =================================
+           SAVE PROFILE
+        ================================= */
+
+        async function saveProfile() {
+
+            const data =
+                getFormData();
+
+            if (!data.full_name) {
+
+                showToast(
+                    "Full name is required.",
+                    "error"
+                );
+
+                document
+                    .getElementById("full_name")
+                    .focus();
+
+                return;
+
+            }
+
+
+            /* Basic CGPA validation */
+
+            if (
+                data.cgpa !== "" &&
+                (
+                    Number(data.cgpa) < 0 ||
+                    Number(data.cgpa) > 10
+                )
+            ) {
+
+                showToast(
+                    "CGPA must be between 0 and 10.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            saveBtn.disabled = true;
+
+            saveBtn.textContent =
+                "Saving...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API}/api/students/profile`,
+                        {
+                            method: "PUT",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            credentials: "include",
+
+                            body:
+                                JSON.stringify(data)
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok ||
+                    !result.success) {
+
+                    throw new Error(
+                        result.message ||
+                        "Profile update failed."
+                    );
+
+                }
+
+
+                originalProfile = {
+                    ...originalProfile,
+                    ...data
+                };
+
+
+                updateProfileHeader({
+                    ...originalProfile,
+                    ...data
+                });
+
+                updateCompletion();
+
+
+                showToast(
+                    "Profile updated successfully! ✓",
+                    "success"
+                );
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast(
+                    error.message ||
+                    "Unable to update profile.",
+                    "error"
+                );
+
+            } finally {
+
+                saveBtn.disabled = false;
+
+                saveBtn.textContent =
+                    "Save Changes";
+
+            }
+
+        }
+
+
+        /* =================================
+           RESET FORM
+        ================================= */
+
+        function resetProfile() {
+
+            if (!originalProfile) return;
+
+            fillProfile(originalProfile);
+
+            fileName.textContent =
+                "JPG, PNG or WebP";
+
+            showToast(
+                "Changes have been reset.",
+                "success"
+            );
+
+        }
+
+
+        /* =================================
+           PHOTO SELECTION
+        ================================= */
+
+        function openPhotoPicker() {
+
+            photoInput.click();
+
+        }
+
+
+        choosePhotoBtn.addEventListener(
+            "click",
+            openPhotoPicker
+        );
+
+
+        photoEditBtn.addEventListener(
+            "click",
+            openPhotoPicker
+        );
+
+
+        photoInput.addEventListener(
+            "change",
+            function () {
+
+                const file =
+                    this.files[0];
+
+                if (!file) return;
+
+
+                /* File size */
+
+                if (
+                    file.size >
+                    2 * 1024 * 1024
+                ) {
+
+                    showToast(
+                        "Profile picture must be below 2MB.",
+                        "error"
+                    );
+
+                    this.value = "";
+
+                    return;
+
+                }
+
+
+                /* Preview */
+
+                const reader =
+                    new FileReader();
+
+                reader.onload =
+                    function (event) {
+
+                        profilePhoto.src =
+                            event.target.result;
+
+                    };
+
+                reader.readAsDataURL(file);
+
+
+                fileName.textContent =
+                    file.name;
+
+
+                showToast(
+                    "Photo preview updated. Save it later when photo upload is connected.",
+                    "success"
+                );
+
+            }
+        );
+
+
+        /* =================================
+           FORM CHANGE
+        ================================= */
+
+        profileForm.addEventListener(
+            "input",
+            updateCompletion
+        );
+
+        profileForm.addEventListener(
+            "change",
+            updateCompletion
+        );
+
+
+        /* =================================
+           SAVE BUTTON
+        ================================= */
+
+        saveBtn.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                saveProfile();
+
+            }
+        );
+
+
+        /* =================================
+           RESET BUTTON
+        ================================= */
+
+        resetBtn.addEventListener(
+            "click",
+            function () {
+
+                resetProfile();
+
+            }
+        );
+
+
+        /* =================================
+           LOGOUT
+        ================================= */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                async function () {
+
+                    try {
+
+                        await fetch(
+                            `${API}/api/auth/logout`,
+                            {
+                                method: "POST",
+                                credentials: "include"
+                            }
+                        );
+
+                    } catch (error) {
+
+                        console.error(error);
+
+                    }
+
+                    window.location.href =
+                        "../login.html";
+
+                }
+            );
+
+
+        /* =================================
+           SIDEBAR
+        ================================= */
+
+        const sidebar =
+            document.querySelector(".sidebar");
+
+        const sidebarOpen =
+            document.getElementById("sidebarOpen");
+
+        const sidebarClose =
+            document.getElementById("sidebarClose");
+
+
+        sidebarOpen.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList
+                    .add("sidebar-open");
+
+            }
+        );
+
+
+        sidebarClose.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList
+                    .remove("sidebar-open");
+
+            }
+        );
+
+
+        /* =================================
+           INITIAL LOAD
+        ================================= */
+
+        loadProfile();
+
+    </script>
+
+</body>
+</html>

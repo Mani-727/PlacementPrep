@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Question Management | PlacementPrep Admin</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .admin-navbar {
+            height: 76px;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-text {
+            color: var(--primary);
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 9px;
+            transition: background 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--surface-2, #f0e8ff);
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1050px;
+            margin: 45px auto;
+            padding: 0 22px 50px;
+        }
+
+        .page-header {
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .card {
+            background: var(--surface);
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form {
+            display: grid;
+            gap: 13px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            outline: none;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 14px;
+            transition: border 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(75, 38, 127, 0.08);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--muted);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .add-btn {
+            border: none;
+            padding: 13px 20px;
+            border-radius: 9px;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #7b4ab8
+            );
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(75, 38, 127, 0.2);
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        #message {
+            font-weight: 600;
+            font-size: 14px;
+            min-height: 20px;
+        }
+
+
+        /* =========================
+           QUESTION LIST
+        ========================= */
+
+        .question-list {
+            display: grid;
+            gap: 16px;
+        }
+
+        .question-card {
+            background: #faf7ff;
+            padding: 20px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(75, 38, 127, 0.08);
+        }
+
+        .question-card h3 {
+            color: var(--primary);
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 13px;
+        }
+
+        .question-card p {
+            color: var(--text);
+            margin: 7px 0;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .admin-navbar {
+                height: 68px;
+                padding: 0 18px;
+            }
+
+            .brand img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-text {
+                font-size: 18px;
+            }
+
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+            .container {
+                margin-top: 30px;
+                padding: 0 15px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 27px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .question-card {
+                padding: 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="admin-navbar">
+
+        <div class="brand">
+
+            <img
+                src="../assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo"
+            >
+
+            <span class="brand-text">
+                PlacementPrep Admin
+            </span>
+
+        </div>
+
+
+        <a
+            href="admin-dashboard.html"
+            class="back-btn"
+        >
+            ← Dashboard
+        </a>
+
+    </nav>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="container">
+
+
+        <div class="page-header">
+
+            <h1>
+                Question Management ❓
+            </h1>
+
+            <p class="subtitle">
+                Add aptitude and technical questions to the database.
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             ADD QUESTION
+        ========================== -->
+
+        <div class="card">
+
+            <h2>
+                Add Question
+            </h2>
+
+
+            <div class="form">
+
+
+                <select id="subject">
+
+                    <option value="">
+                        Select Subject
+                    </option>
+
+                    <option value="Aptitude">
+                        Aptitude
+                    </option>
+
+                    <option value="Programming">
+                        Programming
+                    </option>
+
+                    <option value="DSA">
+                        DSA
+                    </option>
+
+                    <option value="DBMS">
+                        DBMS
+                    </option>
+
+                    <option value="Operating Systems">
+                        Operating Systems
+                    </option>
+
+                    <option value="Computer Networks">
+                        Computer Networks
+                    </option>
+
+                    <option value="OOP">
+                        OOP
+                    </option>
+
+                </select>
+
+
+                <textarea
+                    id="question"
+                    placeholder="Enter question"
+                ></textarea>
+
+
+                <input
+                    id="optionA"
+                    placeholder="Option A"
+                >
+
+                <input
+                    id="optionB"
+                    placeholder="Option B"
+                >
+
+                <input
+                    id="optionC"
+                    placeholder="Option C"
+                >
+
+                <input
+                    id="optionD"
+                    placeholder="Option D"
+                >
+
+
+                <select id="answer">
+
+                    <option value="">
+                        Select Correct Answer
+                    </option>
+
+                    <option value="A">
+                        A
+                    </option>
+
+                    <option value="B">
+                        B
+                    </option>
+
+                    <option value="C">
+                        C
+                    </option>
+
+                    <option value="D">
+                        D
+                    </option>
+
+                </select>
+
+
+                <textarea
+                    id="explanation"
+                    placeholder="Explanation (optional)"
+                ></textarea>
+
+
+                <select id="difficulty">
+
+                    <option value="Easy">
+                        Easy
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="Hard">
+                        Hard
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="add-btn"
+                    onclick="addQuestion()"
+                >
+                    Add Question
+                </button>
+
+
+                <div id="message"></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             SAVED QUESTIONS
+        ========================== -->
+
+        <div class="card">
+
+            <h2>
+                Saved Questions
+            </h2>
+
+
+            <div
+                id="questionList"
+                class="question-list"
+            >
+                Loading...
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+
+    <script>
+
+
+        /* =========================
+           ADD QUESTION
+        ========================== */
+
+        async function addQuestion() {
+
+            const subject =
+                document.getElementById("subject").value;
+
+            const question =
+                document.getElementById("question").value.trim();
+
+            const option_a =
+                document.getElementById("optionA").value.trim();
+
+            const option_b =
+                document.getElementById("optionB").value.trim();
+
+            const option_c =
+                document.getElementById("optionC").value.trim();
+
+            const option_d =
+                document.getElementById("optionD").value.trim();
+
+            const correct_answer =
+                document.getElementById("answer").value;
+
+            const explanation =
+                document.getElementById("explanation").value.trim();
+
+            const difficulty =
+                document.getElementById("difficulty").value;
+
+            const message =
+                document.getElementById("message");
+
+
+            if (
+                !subject ||
+                !question ||
+                !option_a ||
+                !option_b ||
+                !option_c ||
+                !option_d ||
+                !correct_answer
+            ) {
+
+                message.textContent =
+                    "Please fill all required fields.";
+
+                message.style.color =
+                    "#b91c1c";
+
+                return;
+            }
+
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:3000/api/tests/questions",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            subject_id: null,
+                            question,
+                            option_a,
+                            option_b,
+                            option_c,
+                            option_d,
+                            correct_answer,
+                            explanation,
+                            difficulty
+
+                        })
+                    }
+                );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    message.textContent =
+                        "✅ Question saved to MySQL.";
+
+                    message.style.color =
+                        "#166534";
+
+
+                    document.getElementById("question").value = "";
+
+                    document.getElementById("optionA").value = "";
+
+                    document.getElementById("optionB").value = "";
+
+                    document.getElementById("optionC").value = "";
+
+                    document.getElementById("optionD").value = "";
+
+                    document.getElementById("answer").value = "";
+
+                    document.getElementById("explanation").value = "";
+
+
+                    loadQuestions();
+
+
+                } else {
+
+                    message.textContent =
+                        result.message ||
+                        "Failed to add question.";
+
+                    message.style.color =
+                        "#b91c1c";
+
+                }
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "Unable to connect to server.";
+
+                message.style.color =
+                    "#b91c1c";
+
+            }
+
+        }
+
+
+
+        /* =========================
+           LOAD QUESTIONS
+        ========================== */
+
+        async function loadQuestions() {
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:3000/api/tests/questions"
+                );
+
+
+                const result =
+                    await response.json();
+
+
+                const list =
+                    document.getElementById("questionList");
+
+
+                if (
+                    !result.success ||
+                    result.questions.length === 0
+                ) {
+
+                    list.innerHTML =
+                        "<p>No questions added yet.</p>";
+
+                    return;
+
+                }
+
+
+                list.innerHTML = "";
+
+
+                result.questions.forEach((q, index) => {
+
+                    list.innerHTML += `
+
+                        <div class="question-card">
+
+                            <h3>
+                                ${index + 1}. ${q.question}
+                            </h3>
+
+                            <p>
+                                <strong>A.</strong> ${q.option_a}
+                            </p>
+
+                            <p>
+                                <strong>B.</strong> ${q.option_b}
+                            </p>
+
+                            <p>
+                                <strong>C.</strong> ${q.option_c}
+                            </p>
+
+                            <p>
+                                <strong>D.</strong> ${q.option_d}
+                            </p>
+
+                            <div class="meta">
+
+                                Correct:
+                                <strong>${q.correct_answer}</strong>
+
+                                &nbsp; | &nbsp;
+
+                                Difficulty:
+                                <strong>${q.difficulty}</strong>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                });
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                document.getElementById("questionList").innerHTML =
+                    "<p>Unable to load questions.</p>";
+
+            }
+
+        }
+
+
+        /* Initial Load */
+        loadQuestions();
+
+    </script>
+
+
+</body>
+
+</html>

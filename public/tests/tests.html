@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mock Tests | PlacementPrep</title>
+
+    <link rel="stylesheet"
+          href="../css/theme.css">
+
+    <link rel="icon"
+          type="image/jpeg"
+          href="../assets/placementprep-logo.jpg">
+
+
+    <style>
+
+        body {
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(123, 79, 168, 0.10),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(232, 126, 63, 0.08),
+                    transparent 30%
+                ),
+                #f8f3ea;
+
+            color: #35204f;
+        }
+
+
+        /* NAVBAR */
+
+        .tests-navbar {
+
+            height: 70px;
+
+            background:
+                rgba(255, 252, 246, 0.97);
+
+            border-bottom:
+                1px solid #e7dce8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 40px;
+
+            box-shadow:
+                0 4px 20px
+                rgba(75, 38, 127, 0.06);
+        }
+
+
+        .tests-logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #4b267f;
+
+            font-size: 22px;
+
+            font-weight: 800;
+        }
+
+
+        .tests-logo img {
+
+            width: 38px;
+            height: 38px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+        }
+
+
+        .back {
+
+            color: #70459a;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 750;
+
+            padding: 9px 14px;
+
+            border-radius: 9px;
+
+            transition: all 0.2s ease;
+        }
+
+
+        .back:hover {
+
+            background: #eee5f3;
+
+            color: #553276;
+        }
+
+
+        /* CONTAINER */
+
+        .tests-container {
+
+            max-width: 1100px;
+
+            margin: 45px auto;
+
+            padding: 0 20px;
+        }
+
+
+        .page-heading {
+
+            margin-bottom: 30px;
+        }
+
+
+        .page-heading h1 {
+
+            color: #35204f;
+
+            font-size: 34px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .subtitle {
+
+            color: #817687;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        /* TEST GRID */
+
+        .tests {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .test-card {
+
+            position: relative;
+
+            background: #fffdf9;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            border:
+                1px solid #e7dce8;
+
+            box-shadow:
+                0 12px 35px
+                rgba(75, 38, 127, 0.07);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .test-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 18px 40px
+                rgba(75, 38, 127, 0.11);
+        }
+
+
+        .test-icon {
+
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eee4f7,
+                    #f8e9df
+                );
+
+            font-size: 23px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .test-card h2 {
+
+            color: #452862;
+
+            font-size: 20px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .test-card p {
+
+            color: #817687;
+
+            line-height: 1.65;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .info {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 22px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .info span {
+
+            background: #f5eee7;
+
+            color: #67536e;
+
+            padding: 7px 10px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .start {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5b3288,
+                    #7b4fa8
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 18px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            font-weight: 750;
+
+            box-shadow:
+                0 7px 18px
+                rgba(91, 50, 136, 0.18);
+
+            transition: all 0.2s ease;
+        }
+
+
+        .start:hover {
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 11px 24px
+                rgba(91, 50, 136, 0.24);
+        }
+
+
+        @media (max-width: 700px) {
+
+            .tests {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .tests-navbar {
+
+                padding: 0 18px;
+
+            }
+
+
+            .tests-container {
+
+                margin-top: 30px;
+
+            }
+
+
+            .page-heading h1 {
+
+                font-size: 28px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav class="tests-navbar">
+
+
+    <div class="tests-logo">
+
+        <img
+            src="../assets/placementprep-logo.jpg"
+            alt="PlacementPrep">
+
+        <span>
+            PlacementPrep
+        </span>
+
+    </div>
+
+
+    <a
+        class="back"
+        href="../dashboard.html">
+
+        ← Dashboard
+
+    </a>
+
+
+</nav>
+
+
+<div class="tests-container">
+
+
+    <div class="page-heading">
+
+        <h1>
+            Mock Tests 📝
+        </h1>
+
+        <p class="subtitle">
+            Test your preparation with
+            placement-style assessments.
+        </p>
+
+    </div>
+
+
+    <div class="tests">
+
+
+        <!-- APTITUDE -->
+
+        <div class="test-card">
+
+            <div class="test-icon">
+                🧠
+            </div>
+
+            <h2>
+                Aptitude Mock Test
+            </h2>
+
+            <p>
+                Practice quantitative aptitude,
+                logical reasoning and placement
+                mathematics.
+            </p>
+
+            <div class="info">
+
+                <span>
+                    📌 10 Questions
+                </span>
+
+                <span>
+                    ⏱️ 10 Minutes
+                </span>
+
+            </div>
+
+            <a
+                class="start"
+                href="test.html?testId=1">
+
+                Start Test →
+
+            </a>
+
+        </div>
+
+
+        <!-- TECHNICAL -->
+
+        <div class="test-card">
+
+            <div class="test-icon">
+                💻
+            </div>
+
+            <h2>
+                Technical Fundamentals
+            </h2>
+
+            <p>
+                Practice Programming, DBMS,
+                Operating Systems and Networking
+                concepts.
+            </p>
+
+            <div class="info">
+
+                <span>
+                    📌 10 Questions
+                </span>
+
+                <span>
+                    ⏱️ 10 Minutes
+                </span>
+
+            </div>
+
+            <a
+                class="start"
+                href="test.html?testId=2">
+
+                Start Test →
+
+            </a>
+
+        </div>
+
+
+        <!-- PLACEMENT -->
+
+        <div class="test-card">
+
+            <div class="test-icon">
+                🎯
+            </div>
+
+            <h2>
+                Placement Challenge
+            </h2>
+
+            <p>
+                A mixed assessment covering
+                aptitude and technical fundamentals.
+            </p>
+
+            <div class="info">
+
+                <span>
+                    📌 10 Questions
+                </span>
+
+                <span>
+                    ⏱️ 10 Minutes
+                </span>
+
+            </div>
+
+            <a
+                class="start"
+                href="test.html?testId=3">
+
+                Start Test →
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>

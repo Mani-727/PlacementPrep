@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Builder | PlacementPrep</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+        body {
+            background: #f7f2ea;
+            margin: 0;
+        }
+
+        /* Navbar */
+        .resume-navbar {
+            height: 72px;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 1px solid #e6ddeb;
+            box-shadow: 0 3px 15px rgba(48, 33, 65, 0.06);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .navbar-brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: #4b267f;
+        }
+
+        .dashboard-link {
+            color: #4b267f;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px 16px;
+            border-radius: 9px;
+            background: #f0eafa;
+            transition: all 0.2s ease;
+        }
+
+        .dashboard-link:hover {
+            background: #e5d9f3;
+            transform: translateY(-1px);
+        }
+
+        /* Main Container */
+        .resume-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px 60px;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 28px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 8px;
+            color: #3d1f69;
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: #756b7d;
+            font-size: 15px;
+        }
+
+        /* Form Cards */
+        .form-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #e8dff0;
+            box-shadow: 0 8px 25px rgba(48, 33, 65, 0.07);
+            margin-bottom: 22px;
+        }
+
+        .form-card h2 {
+            margin: 0 0 22px;
+            color: #4b267f;
+            font-size: 20px;
+            font-weight: 800;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eadff1;
+        }
+
+        /* Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 4px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #403747;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            box-sizing: border-box;
+            border: 1px solid #d9cee5;
+            border-radius: 10px;
+            background: #fffdfb;
+            color: #302936;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s ease,
+                        box-shadow 0.2s ease,
+                        background 0.2s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #aaa1b0;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #7b4daf;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(123, 77, 175, 0.10);
+        }
+
+        textarea {
+            min-height: 115px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .form-actions button {
+            border: none;
+            padding: 13px 22px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 800;
+            transition: transform 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        .form-actions button:hover {
+            transform: translateY(-2px);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #4b267f, #7043a4);
+            color: #ffffff;
+            box-shadow: 0 8px 18px rgba(75, 38, 127, 0.20);
+        }
+
+        .clear-btn {
+            background: #eee8f3;
+            color: #4b267f;
+        }
+
+        .clear-btn:hover {
+            background: #e4daec;
+        }
+
+        /* Helpful Note */
+        .resume-note {
+            margin-top: 20px;
+            padding: 15px 18px;
+            background: #fff4e8;
+            border-left: 4px solid #e8893b;
+            border-radius: 9px;
+            color: #6f4b2f;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            .resume-navbar {
+                padding: 0 18px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .dashboard-link {
+                padding: 9px 11px;
+                font-size: 13px;
+            }
+
+            .resume-container {
+                margin-top: 28px;
+                padding: 0 12px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 27px;
+            }
+
+            .form-card {
+                padding: 22px 18px;
+                border-radius: 13px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .form-group.full-width {
+                grid-column: auto;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .form-actions button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="resume-navbar">
+
+    <a href="../dashboard.html" class="navbar-brand">
+        <img src="../assets/placementprep-logo.jpg"
+             alt="PlacementPrep Logo">
+
+        <span class="brand-name">PlacementPrep</span>
+    </a>
+
+    <a href="../dashboard.html" class="dashboard-link">
+        ← Dashboard
+    </a>
+
+</nav>
+
+
+<!-- Main Content -->
+<main class="resume-container">
+
+    <!-- Header -->
+    <div class="page-header">
+        <h1>Resume Builder 📄</h1>
+        <p>
+            Create a professional resume for your placement applications.
+        </p>
+    </div>
+
+
+    <!-- Personal Information -->
+    <div class="form-card">
+
+        <h2>Personal Information</h2>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                    id="name"
+                    type="text"
+                    placeholder="Your full name">
+            </div>
+
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="you@example.com">
+            </div>
+
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input
+                    id="phone"
+                    type="tel"
+                    placeholder="+91 XXXXX XXXXX">
+            </div>
+
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input
+                    id="location"
+                    type="text"
+                    placeholder="City, State">
+            </div>
+
+
+            <div class="form-group full-width">
+                <label for="objective">Career Objective</label>
+
+                <textarea
+                    id="objective"
+                    placeholder="Write a short professional career objective..."></textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Education -->
+    <div class="form-card">
+
+        <h2>Education</h2>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label for="degree">Degree</label>
+
+                <input
+                    id="degree"
+                    type="text"
+                    placeholder="B.Tech - Computer Science">
+            </div>
+
+
+            <div class="form-group">
+                <label for="college">College</label>
+
+                <input
+                    id="college"
+                    type="text"
+                    placeholder="College Name">
+            </div>
+
+
+            <div class="form-group">
+                <label for="educationYear">Year</label>
+
+                <input
+                    id="educationYear"
+                    type="text"
+                    placeholder="2024 - 2028">
+            </div>
+
+
+            <div class="form-group">
+                <label for="cgpa">CGPA / Percentage</label>
+
+                <input
+                    id="cgpa"
+                    type="text"
+                    placeholder="8.06">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Skills & Experience -->
+    <div class="form-card">
+
+        <h2>Skills & Experience</h2>
+
+
+        <div class="form-group">
+            <label for="skills">Technical Skills</label>
+
+            <textarea
+                id="skills"
+                placeholder="Python, JavaScript, HTML, CSS, MySQL, Node.js..."></textarea>
+        </div>
+
+
+        <div class="form-group">
+            <label for="projects">Projects</label>
+
+            <textarea
+                id="projects"
+                placeholder="Project name - technologies used - short description"></textarea>
+        </div>
+
+
+        <div class="form-group">
+            <label for="certifications">Certifications</label>
+
+            <textarea
+                id="certifications"
+                placeholder="Certification name, issuing organization..."></textarea>
+        </div>
+
+
+        <div class="form-group">
+            <label for="achievements">Achievements</label>
+
+            <textarea
+                id="achievements"
+                placeholder="Awards, competitions, leadership, etc."></textarea>
+        </div>
+
+    </div>
+
+
+    <!-- Actions -->
+    <div class="form-actions">
+
+        <button
+            class="generate-btn"
+            onclick="generateResume()">
+            Generate Resume
+        </button>
+
+        <button
+            class="clear-btn"
+            onclick="clearForm()">
+            Clear
+        </button>
+
+    </div>
+
+
+    <div class="resume-note">
+        💡 <strong>Tip:</strong>
+        Keep your resume concise, highlight your strongest technical skills,
+        and use measurable achievements wherever possible.
+    </div>
+
+</main>
+
+
+<script>
+
+function generateResume() {
+
+    const resume = {
+
+        name: document.getElementById("name").value.trim(),
+
+        email: document.getElementById("email").value.trim(),
+
+        phone: document.getElementById("phone").value.trim(),
+
+        location: document.getElementById("location").value.trim(),
+
+        objective: document.getElementById("objective").value.trim(),
+
+        degree: document.getElementById("degree").value.trim(),
+
+        college: document.getElementById("college").value.trim(),
+
+        educationYear:
+            document.getElementById("educationYear").value.trim(),
+
+        cgpa:
+            document.getElementById("cgpa").value.trim(),
+
+        skills:
+            document.getElementById("skills").value.trim(),
+
+        projects:
+            document.getElementById("projects").value.trim(),
+
+        certifications:
+            document.getElementById("certifications").value.trim(),
+
+        achievements:
+            document.getElementById("achievements").value.trim()
+
+    };
+
+
+    localStorage.setItem(
+        "resumeData",
+        JSON.stringify(resume)
+    );
+
+
+    window.location.href = "resume-preview.html";
+}
+
+
+function clearForm() {
+
+    document
+        .querySelectorAll("input, textarea")
+        .forEach(element => {
+            element.value = "";
+        });
+
+}
+
+</script>
+
+</body>
+</html>

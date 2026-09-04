@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Preview | PlacementPrep</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+        body {
+            background: #f7f2ea;
+            margin: 0;
+            padding: 30px 20px 60px;
+        }
+
+        .preview-page {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Top Actions */
+        .preview-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .preview-actions a,
+        .preview-actions button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        .preview-actions a:hover,
+        .preview-actions button:hover {
+            transform: translateY(-2px);
+        }
+
+        .edit-btn {
+            background: #eee7f7;
+            color: #4b267f;
+        }
+
+        .print-btn {
+            background: linear-gradient(135deg, #4b267f, #6f42a5);
+            color: white;
+            box-shadow: 0 8px 20px rgba(75, 38, 127, 0.20);
+        }
+
+        /* Resume Paper */
+        .resume-paper {
+            width: 100%;
+            max-width: 850px;
+            min-height: 1100px;
+            margin: 0 auto;
+            padding: 55px 60px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 15px 45px rgba(48, 33, 65, 0.12);
+            color: #2d2633;
+        }
+
+        /* Header */
+        .resume-header {
+            text-align: center;
+            border-bottom: 2px solid #4b267f;
+            padding-bottom: 22px;
+            margin-bottom: 30px;
+        }
+
+        .resume-header h1 {
+            margin: 0 0 10px;
+            color: #3d1f69;
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info {
+            color: #6d6475;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Sections */
+        .resume-section {
+            margin-top: 25px;
+        }
+
+        .resume-section h2 {
+            margin: 0 0 12px;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #d9cee5;
+            color: #4b267f;
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+        }
+
+        .resume-content {
+            color: #3f3945;
+            font-size: 14px;
+            line-height: 1.75;
+            white-space: pre-line;
+        }
+
+        /* Empty content */
+        .empty-content {
+            color: #99909f;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            body {
+                padding: 20px 10px 40px;
+            }
+
+            .resume-paper {
+                padding: 35px 25px;
+                min-height: auto;
+            }
+
+            .resume-header h1 {
+                font-size: 28px;
+            }
+        }
+
+        /* Print / Save PDF */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .preview-page {
+                max-width: none;
+            }
+
+            .preview-actions {
+                display: none;
+            }
+
+            .resume-paper {
+                width: 100%;
+                max-width: none;
+                min-height: auto;
+                margin: 0;
+                padding: 45px 55px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .resume-section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="preview-page">
+
+    <!-- Action Buttons -->
+    <div class="preview-actions">
+        <a href="resume-builder.html" class="edit-btn">
+            ← Edit Resume
+        </a>
+
+        <button class="print-btn" onclick="window.print()">
+            Print / Save PDF
+        </button>
+    </div>
+
+
+    <!-- Resume -->
+    <div class="resume-paper">
+
+        <!-- Header -->
+        <div class="resume-header">
+            <h1 id="name">Your Name</h1>
+            <div class="contact-info" id="contact"></div>
+        </div>
+
+
+        <!-- Career Objective -->
+        <div class="resume-section">
+            <h2>CAREER OBJECTIVE</h2>
+            <div class="resume-content" id="objective"></div>
+        </div>
+
+
+        <!-- Education -->
+        <div class="resume-section">
+            <h2>EDUCATION</h2>
+            <div class="resume-content" id="education"></div>
+        </div>
+
+
+        <!-- Technical Skills -->
+        <div class="resume-section">
+            <h2>TECHNICAL SKILLS</h2>
+            <div class="resume-content" id="skills"></div>
+        </div>
+
+
+        <!-- Projects -->
+        <div class="resume-section">
+            <h2>PROJECTS</h2>
+            <div class="resume-content" id="projects"></div>
+        </div>
+
+
+        <!-- Certifications -->
+        <div class="resume-section">
+            <h2>CERTIFICATIONS</h2>
+            <div class="resume-content" id="certifications"></div>
+        </div>
+
+
+        <!-- Achievements -->
+        <div class="resume-section">
+            <h2>ACHIEVEMENTS</h2>
+            <div class="resume-content" id="achievements"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const data =
+    JSON.parse(localStorage.getItem("resumeData")) || {};
+
+
+// Name
+document.getElementById("name").textContent =
+    data.name || "Your Name";
+
+
+// Contact
+const contact =
+    [data.email, data.phone, data.location]
+        .filter(Boolean)
+        .join(" | ");
+
+document.getElementById("contact").textContent =
+    contact || "Email | Phone | Location";
+
+
+// Helper function
+function setContent(id, value, fallback) {
+
+    const element = document.getElementById(id);
+
+    if (value) {
+        element.textContent = value;
+    } else {
+        element.textContent = fallback;
+        element.classList.add("empty-content");
+    }
+}
+
+
+// Career Objective
+setContent(
+    "objective",
+    data.objective,
+    "Add your career objective."
+);
+
+
+// Education
+const education =
+`${data.degree || ""}
+${data.college || ""}
+${data.educationYear || ""}
+${data.cgpa ? "CGPA: " + data.cgpa : ""}`.trim();
+
+setContent(
+    "education",
+    education,
+    "Add your education details."
+);
+
+
+// Skills
+setContent(
+    "skills",
+    data.skills,
+    "Add your technical skills."
+);
+
+
+// Projects
+setContent(
+    "projects",
+    data.projects,
+    "Add your projects."
+);
+
+
+// Certifications
+setContent(
+    "certifications",
+    data.certifications,
+    "Add your certifications."
+);
+
+
+// Achievements
+setContent(
+    "achievements",
+    data.achievements,
+    "Add your achievements."
+);
+
+</script>
+
+</body>
+</html>

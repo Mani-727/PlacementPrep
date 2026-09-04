@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Coding Practice | PlacementPrep</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+        body {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* Navbar */
+        .coding-navbar {
+            height: 76px;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 10px 16px;
+            border-radius: 10px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--surface-2, #f0e8ff);
+            transform: translateX(-2px);
+        }
+
+        /* Main */
+        .coding-container {
+            max-width: 1200px;
+            margin: 45px auto;
+            padding: 0 22px 50px;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            color: var(--primary);
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Filters */
+        .filters {
+            background: var(--surface);
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        select {
+            padding: 11px 14px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            outline: none;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        select:focus {
+            border-color: var(--primary);
+        }
+
+        /* Problems */
+        .problems {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .problem {
+            background: var(--surface);
+            padding: 26px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .problem:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(75, 38, 127, 0.12);
+        }
+
+        .problem h2 {
+            color: var(--primary);
+            font-size: 20px;
+            margin-bottom: 11px;
+        }
+
+        .problem p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 48px;
+        }
+
+        /* Difficulty */
+        .difficulty {
+            display: inline-block;
+            padding: 6px 11px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 17px;
+        }
+
+        .easy {
+            background: #f0e8ff;
+            color: var(--primary);
+        }
+
+        .medium {
+            background: #fff3df;
+            color: #a35d16;
+        }
+
+        .hard {
+            background: #ffe9e5;
+            color: #a33c2b;
+        }
+
+        /* Solve Button */
+        .solve {
+            display: inline-block;
+            padding: 10px 17px;
+            border-radius: 9px;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #7b4ab8
+            );
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .solve:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(75, 38, 127, 0.22);
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .problems {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .coding-navbar {
+                height: 68px;
+                padding: 0 18px;
+            }
+
+            .brand img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-name {
+                font-size: 19px;
+            }
+
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+            .coding-container {
+                margin-top: 30px;
+                padding: 0 15px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .problems {
+                grid-template-columns: 1fr;
+            }
+
+            .problem {
+                padding: 23px;
+            }
+
+            .problem p {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="coding-navbar">
+
+        <div class="brand">
+
+            <img
+                src="../assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo"
+            >
+
+            <span class="brand-name">
+                PlacementPrep
+            </span>
+
+        </div>
+
+        <a
+            href="../dashboard.html"
+            class="back-btn"
+        >
+            ← Dashboard
+        </a>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="coding-container">
+
+        <div class="page-header">
+
+            <h1>
+                Coding Practice 💻
+            </h1>
+
+            <p>
+                Improve your problem-solving skills with
+                placement-focused coding problems.
+            </p>
+
+        </div>
+
+
+        <!-- Filters -->
+        <div class="filters">
+
+            <select
+                id="difficulty"
+                onchange="filterProblems()"
+            >
+                <option value="all">
+                    All Difficulties
+                </option>
+
+                <option value="Easy">
+                    Easy
+                </option>
+
+                <option value="Medium">
+                    Medium
+                </option>
+
+                <option value="Hard">
+                    Hard
+                </option>
+            </select>
+
+
+            <select
+                id="category"
+                onchange="filterProblems()"
+            >
+                <option value="all">
+                    All Categories
+                </option>
+
+                <option value="Arrays">
+                    Arrays
+                </option>
+
+                <option value="Strings">
+                    Strings
+                </option>
+
+                <option value="Math">
+                    Math
+                </option>
+
+                <option value="Logic">
+                    Logic
+                </option>
+            </select>
+
+        </div>
+
+
+        <!-- Problems -->
+        <div
+            class="problems"
+            id="problems"
+        ></div>
+
+    </main>
+
+
+    <script>
+
+        const problems = [
+
+            {
+                id: 1,
+                title: "Two Sum",
+                description:
+                    "Find two numbers in an array whose sum equals a given target.",
+                difficulty: "Easy",
+                category: "Arrays"
+            },
+
+            {
+                id: 2,
+                title: "Reverse a String",
+                description:
+                    "Write a program to reverse the characters of a given string.",
+                difficulty: "Easy",
+                category: "Strings"
+            },
+
+            {
+                id: 3,
+                title: "Find Maximum Element",
+                description:
+                    "Find the largest element present in an integer array.",
+                difficulty: "Easy",
+                category: "Arrays"
+            },
+
+            {
+                id: 4,
+                title: "Palindrome Number",
+                description:
+                    "Determine whether a given number reads the same forward and backward.",
+                difficulty: "Easy",
+                category: "Math"
+            },
+
+            {
+                id: 5,
+                title: "Valid Parentheses",
+                description:
+                    "Check whether brackets in a given expression are balanced.",
+                difficulty: "Medium",
+                category: "Logic"
+            },
+
+            {
+                id: 6,
+                title: "Longest Substring",
+                description:
+                    "Find the length of the longest substring without repeating characters.",
+                difficulty: "Medium",
+                category: "Strings"
+            },
+
+            {
+                id: 7,
+                title: "Binary Search",
+                description:
+                    "Implement binary search to find an element in a sorted array.",
+                difficulty: "Medium",
+                category: "Arrays"
+            },
+
+            {
+                id: 8,
+                title: "Maximum Subarray",
+                description:
+                    "Find the contiguous subarray with the largest possible sum.",
+                difficulty: "Medium",
+                category: "Arrays"
+            },
+
+            {
+                id: 9,
+                title: "Merge Intervals",
+                description:
+                    "Merge overlapping intervals into a single set of intervals.",
+                difficulty: "Hard",
+                category: "Logic"
+            }
+
+        ];
+
+
+        function displayProblems(list) {
+
+            const container =
+                document.getElementById("problems");
+
+            container.innerHTML = "";
+
+
+            if (list.length === 0) {
+
+                container.innerHTML = `
+                    <div style="
+                        grid-column: 1 / -1;
+                        background: var(--surface);
+                        padding: 35px;
+                        border-radius: 16px;
+                        text-align: center;
+                        color: var(--muted);
+                        border: 1px solid var(--border);
+                    ">
+                        No coding problems found for the selected filters.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            list.forEach(problem => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "problem";
+
+
+                card.innerHTML = `
+
+                    <span class="difficulty ${problem.difficulty.toLowerCase()}">
+                        ${problem.difficulty}
+                    </span>
+
+                    <h2>
+                        ${problem.title}
+                    </h2>
+
+                    <p>
+                        ${problem.description}
+                    </p>
+
+                    <a
+                        class="solve"
+                        href="problem.html?id=${problem.id}"
+                    >
+                        Solve Problem
+                    </a>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+        function filterProblems() {
+
+            const difficulty =
+                document.getElementById("difficulty").value;
+
+            const category =
+                document.getElementById("category").value;
+
+
+            const filtered =
+                problems.filter(problem => {
+
+                    const difficultyMatch =
+                        difficulty === "all" ||
+                        problem.difficulty === difficulty;
+
+                    const categoryMatch =
+                        category === "all" ||
+                        problem.category === category;
+
+                    return difficultyMatch && categoryMatch;
+
+                });
+
+
+            displayProblems(filtered);
+
+        }
+
+
+        displayProblems(problems);
+
+    </script>
+
+</body>
+</html>

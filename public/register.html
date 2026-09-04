@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | PlacementPrep</title>
+
+    <link rel="stylesheet" href="css/theme.css">
+
+    <link rel="icon"
+          type="image/jpeg"
+          href="assets/placementprep-logo.jpg">
+
+    <style>
+        /* ================================
+           REGISTER PAGE
+           PlacementPrep Theme
+        ================================= */
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(123, 79, 168, 0.12), transparent 28%),
+                radial-gradient(circle at 90% 80%, rgba(232, 126, 63, 0.10), transparent 30%),
+                #f8f3ea;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 1100px;
+            min-height: 650px;
+
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+
+            background: rgba(255, 252, 246, 0.96);
+            border: 1px solid rgba(75, 38, 127, 0.10);
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px rgba(75, 38, 127, 0.12);
+        }
+
+        /* ================================
+           LEFT PANEL
+        ================================= */
+
+        .register-left {
+            position: relative;
+
+            padding: 55px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #4b267f 0%,
+                    #633d91 55%,
+                    #7951a2 100%
+                );
+
+            color: #fff;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        .register-left::before {
+            content: "";
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            top: -90px;
+            right: -80px;
+        }
+
+        .register-left::after {
+            content: "";
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            border-radius: 50%;
+
+            background: rgba(232, 126, 63, 0.15);
+
+            bottom: -70px;
+            left: -60px;
+        }
+
+        .register-brand {
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            margin-bottom: 45px;
+        }
+
+        .register-brand img {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 16px;
+            object-fit: cover;
+
+            background: #fff;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .register-brand span {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .register-left-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .register-left h1 {
+            font-size: 42px;
+            line-height: 1.12;
+
+            margin-bottom: 20px;
+
+            letter-spacing: -1px;
+        }
+
+        .register-left h1 span {
+            color: #ffc078;
+        }
+
+        .register-left-description {
+            max-width: 420px;
+
+            font-size: 16px;
+            line-height: 1.75;
+
+            color: rgba(255, 255, 255, 0.84);
+        }
+
+        .register-features {
+            margin-top: 35px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .register-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-size: 14px;
+
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .feature-check {
+            width: 27px;
+            height: 27px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.14);
+
+            color: #ffc078;
+
+            font-weight: 800;
+        }
+
+        /* ================================
+           RIGHT PANEL
+        ================================= */
+
+        .register-right {
+            padding: 50px 60px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .register-heading {
+            margin-bottom: 28px;
+        }
+
+        .register-heading h2 {
+            color: #35204f;
+
+            font-size: 31px;
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+        .register-heading p {
+            color: #786d80;
+
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ================================
+           FORM
+        ================================= */
+
+        .register-form {
+            width: 100%;
+        }
+
+        .register-form .form-group {
+            margin-bottom: 17px;
+        }
+
+        .register-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .register-form label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #4a3a57;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .register-form input,
+        .register-form select {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #ddd3e2;
+            border-radius: 11px;
+
+            background: #fffdf9;
+
+            color: #35204f;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: all 0.2s ease;
+        }
+
+        .register-form input::placeholder {
+            color: #aaa0ad;
+        }
+
+        .register-form input:focus,
+        .register-form select:focus {
+            border-color: #7b4fa8;
+
+            box-shadow:
+                0 0 0 3px rgba(123, 79, 168, 0.10);
+
+            background: #fff;
+        }
+
+        .register-form select {
+            cursor: pointer;
+        }
+
+        /* ================================
+           BUTTON
+        ================================= */
+
+        .register-btn {
+            width: 100%;
+
+            margin-top: 5px;
+
+            padding: 14px 20px;
+
+            border: none;
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5b3288,
+                    #7b4fa8
+                );
+
+            color: white;
+
+            font-size: 15px;
+            font-weight: 750;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(91, 50, 136, 0.22);
+
+            transition: all 0.2s ease;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 14px 30px rgba(91, 50, 136, 0.28);
+        }
+
+        .register-btn:active {
+            transform: translateY(0);
+        }
+
+        .register-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ================================
+           MESSAGE
+        ================================= */
+
+        .message {
+            display: none;
+
+            margin-top: 14px;
+            padding: 11px 13px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .message.success {
+            background: #e9f7ee;
+            color: #267044;
+
+            border: 1px solid #c8e8d2;
+        }
+
+        .message.error {
+            background: #fff0ed;
+            color: #a33d2c;
+
+            border: 1px solid #f1c9c0;
+        }
+
+        /* ================================
+           LOGIN LINK
+        ================================= */
+
+        .login-link {
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #817687;
+
+            font-size: 13px;
+        }
+
+        .login-link a {
+            color: #693e91;
+
+            font-weight: 800;
+
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            color: #e87e3f;
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 850px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .register-container {
+                grid-template-columns: 1fr;
+            }
+
+            .register-left {
+                padding: 40px;
+            }
+
+            .register-left h1 {
+                font-size: 34px;
+            }
+
+            .register-features {
+                display: none;
+            }
+
+            .register-right {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .register-left {
+                padding: 30px;
+            }
+
+            .register-right {
+                padding: 30px 22px;
+            }
+
+            .register-form .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .register-left h1 {
+                font-size: 30px;
+            }
+
+            .register-heading h2 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="register-container">
+
+    <!-- ================================
+         LEFT PANEL
+    ================================= -->
+
+    <section class="register-left">
+
+        <div class="register-brand">
+
+            <img
+                src="assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo"
+            >
+
+            <span>PlacementPrep</span>
+
+        </div>
+
+        <div class="register-left-content">
+
+            <h1>
+                Prepare Smart.<br>
+                Practice More.<br>
+                <span>Get Placed.</span>
+            </h1>
+
+            <p class="register-left-description">
+                Your all-in-one placement preparation platform
+                designed to help engineering students become
+                confident and career-ready.
+            </p>
+
+            <div class="register-features">
+
+                <div class="register-feature">
+                    <span class="feature-check">✓</span>
+                    Aptitude & Technical Preparation
+                </div>
+
+                <div class="register-feature">
+                    <span class="feature-check">✓</span>
+                    Coding & DSA Practice
+                </div>
+
+                <div class="register-feature">
+                    <span class="feature-check">✓</span>
+                    Company-Specific Preparation
+                </div>
+
+                <div class="register-feature">
+                    <span class="feature-check">✓</span>
+                    Interview & Resume Preparation
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         RIGHT PANEL
+    ================================= -->
+
+    <section class="register-right">
+
+        <div class="register-heading">
+
+            <h2>Create your account</h2>
+
+            <p>
+                Start your placement preparation journey today.
+            </p>
+
+        </div>
+
+
+        <form id="registerForm" class="register-form">
+
+            <div class="form-group">
+
+                <label for="full_name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="full_name"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="college">
+                    College
+                </label>
+
+                <input
+                    type="text"
+                    id="college"
+                    placeholder="Enter your college name"
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="branch">
+                        Branch
+                    </label>
+
+                    <select id="branch" required>
+
+                        <option value="">
+                            Select your branch
+                        </option>
+
+                        <optgroup label="Computer Science & Information Technology">
+
+                            <option value="CSE">
+                                Computer Science and Engineering (CSE)
+                            </option>
+
+                            <option value="CSE-AIML">
+                                CSE - Artificial Intelligence & Machine Learning
+                            </option>
+
+                            <option value="CSE-DS">
+                                CSE - Data Science
+                            </option>
+
+                            <option value="CSE-AI">
+                                CSE - Artificial Intelligence
+                            </option>
+
+                            <option value="CSE-Cyber">
+                                CSE - Cyber Security
+                            </option>
+
+                            <option value="CSE-IoT">
+                                CSE - Internet of Things
+                            </option>
+
+                            <option value="IT">
+                                Information Technology (IT)
+                            </option>
+
+                            <option value="AI-DS">
+                                Artificial Intelligence & Data Science
+                            </option>
+
+                            <option value="AI-ML">
+                                Artificial Intelligence & Machine Learning
+                            </option>
+
+                            <option value="Data Science">
+                                Data Science
+                            </option>
+
+                            <option value="CSBS">
+                                Computer Science & Business Systems
+                            </option>
+
+                            <option value="CS">
+                                Computer Science
+                            </option>
+
+                            <option value="Computer Engineering">
+                                Computer Engineering
+                            </option>
+
+                        </optgroup>
+
+
+                        <optgroup label="Electronics & Communication">
+
+                            <option value="ECE">
+                                Electronics & Communication Engineering (ECE)
+                            </option>
+
+                            <option value="EEE">
+                                Electrical & Electronics Engineering (EEE)
+                            </option>
+
+                            <option value="ETC">
+                                Electronics & Telecommunication Engineering
+                            </option>
+
+                            <option value="ECE-ACT">
+                                Electronics & Communication Technology
+                            </option>
+
+                            <option value="VLSI">
+                                Electronics Engineering - VLSI
+                            </option>
+
+                            <option value="Embedded Systems">
+                                Embedded Systems
+                            </option>
+
+                            <option value="Instrumentation">
+                                Instrumentation & Control Engineering
+                            </option>
+
+                        </optgroup>
+
+
+                        <optgroup label="Core Engineering">
+
+                            <option value="Mechanical">
+                                Mechanical Engineering
+                            </option>
+
+                            <option value="Civil">
+                                Civil Engineering
+                            </option>
+
+                            <option value="Chemical">
+                                Chemical Engineering
+                            </option>
+
+                            <option value="Aerospace">
+                                Aerospace Engineering
+                            </option>
+
+                            <option value="Automobile">
+                                Automobile Engineering
+                            </option>
+
+                            <option value="Production">
+                                Production Engineering
+                            </option>
+
+                            <option value="Industrial">
+                                Industrial Engineering
+                            </option>
+
+                            <option value="Manufacturing">
+                                Manufacturing Engineering
+                            </option>
+
+                            <option value="Mechatronics">
+                                Mechatronics Engineering
+                            </option>
+
+                            <option value="Robotics">
+                                Robotics & Automation
+                            </option>
+
+                            <option value="Biomedical">
+                                Biomedical Engineering
+                            </option>
+
+                            <option value="Biotechnology">
+                                Biotechnology
+                            </option>
+
+                            <option value="Environmental">
+                                Environmental Engineering
+                            </option>
+
+                            <option value="Petroleum">
+                                Petroleum Engineering
+                            </option>
+
+                            <option value="Mining">
+                                Mining Engineering
+                            </option>
+
+                            <option value="Metallurgical">
+                                Metallurgical Engineering
+                            </option>
+
+                            <option value="Agricultural">
+                                Agricultural Engineering
+                            </option>
+
+                        </optgroup>
+
+
+                        <optgroup label="Other Engineering Branches">
+
+                            <option value="Textile">
+                                Textile Engineering
+                            </option>
+
+                            <option value="Food Technology">
+                                Food Technology
+                            </option>
+
+                            <option value="Marine">
+                                Marine Engineering
+                            </option>
+
+                            <option value="Architecture">
+                                Architecture
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </optgroup>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="year">
+                        Year
+                    </label>
+
+                    <select id="year">
+
+                        <option value="">
+                            Select year
+                        </option>
+
+                        <option value="1st Year">
+                            1st Year
+                        </option>
+
+                        <option value="2nd Year">
+                            2nd Year
+                        </option>
+
+                        <option value="3rd Year">
+                            3rd Year
+                        </option>
+
+                        <option value="4th Year">
+                            4th Year
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="register-btn"
+                id="registerBtn"
+            >
+                Create Account
+            </button>
+
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+        </form>
+
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+const form = document.getElementById("registerForm");
+const message = document.getElementById("message");
+const registerBtn = document.getElementById("registerBtn");
+
+form.addEventListener("submit", async function (event) {
+
+    event.preventDefault();
+
+    registerBtn.disabled = true;
+    registerBtn.textContent = "Creating Account...";
+
+    message.style.display = "none";
+
+    const data = {
+
+        full_name:
+            document.getElementById("full_name").value.trim(),
+
+        email:
+            document.getElementById("email").value.trim(),
+
+        password:
+            document.getElementById("password").value,
+
+        college:
+            document.getElementById("college").value.trim(),
+
+        branch:
+            document.getElementById("branch").value,
+
+        year:
+            document.getElementById("year").value
+
+    };
+
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:3000/api/auth/register",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+            }
+        );
+
+
+        const result = await response.json();
+
+        message.style.display = "block";
+
+
+        if (result.success) {
+
+            message.className =
+                "message success";
+
+            message.textContent =
+                result.message;
+
+            form.reset();
+
+        } else {
+
+            message.className =
+                "message error";
+
+            message.textContent =
+                result.message;
+
+        }
+
+
+    } catch (error) {
+
+        message.style.display = "block";
+
+        message.className =
+            "message error";
+
+        message.textContent =
+            "Unable to connect to the server.";
+
+        console.error(error);
+
+    } finally {
+
+        registerBtn.disabled = false;
+
+        registerBtn.textContent =
+            "Create Account";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Company Preparation | PlacementPrep</title>
+
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="../assets/placementprep-logo.jpg">
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css">
+
+
+    <style>
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+
+        /* ================================
+           NAVBAR
+           ================================ */
+
+        .company-navbar {
+            height: 76px;
+            background: var(--surface);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 40px;
+
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+
+        .back-btn {
+            color: var(--primary);
+            text-decoration: none;
+
+            font-weight: 600;
+
+            padding: 10px 16px;
+
+            border-radius: 10px;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .back-btn:hover {
+            background: var(--surface-2, #f0e8ff);
+            transform: translateX(-2px);
+        }
+
+
+        /* ================================
+           CONTAINER
+           ================================ */
+
+        .company-container {
+            max-width: 1000px;
+
+            margin: 45px auto;
+
+            padding: 0 22px 50px;
+        }
+
+
+        /* ================================
+           HERO
+           ================================ */
+
+        .company-hero {
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    #7b4ab8
+                );
+
+            color: white;
+
+            padding: 38px;
+
+            border-radius: 20px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 14px 30px
+                rgba(75, 38, 127, 0.18);
+        }
+
+
+        .company-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            right: -55px;
+            top: -70px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.10);
+        }
+
+
+        .company-hero h1 {
+            position: relative;
+
+            z-index: 1;
+
+            font-size: 34px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .company-hero p {
+            position: relative;
+
+            z-index: 1;
+
+            opacity: 0.92;
+
+            line-height: 1.6;
+
+            max-width: 700px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .company-type {
+            position: relative;
+
+            z-index: 1;
+
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            background:
+                rgba(255, 255, 255, 0.16);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.25);
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* ================================
+           PREPARATION GRID
+           ================================ */
+
+        .preparation-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .preparation-card {
+
+            background: var(--surface);
+
+            padding: 26px;
+
+            border-radius: 18px;
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow: var(--shadow);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .preparation-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(75, 38, 127, 0.11);
+        }
+
+
+        /* ================================
+           ICON
+           ================================ */
+
+        .card-icon {
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #f0e8ff;
+
+            border-radius: 15px;
+
+            font-size: 30px;
+
+            margin-bottom: 16px;
+        }
+
+
+        .preparation-card h2 {
+
+            color: var(--primary);
+
+            font-size: 21px;
+
+            margin-bottom: 14px;
+        }
+
+
+        .preparation-card ul {
+
+            padding-left: 20px;
+
+            color: var(--muted);
+
+            line-height: 2;
+
+            margin: 0;
+        }
+
+
+        .preparation-card li::marker {
+
+            color: var(--accent);
+        }
+
+
+        /* ================================
+           CARD ACCENTS
+           ================================ */
+
+        .aptitude-card {
+            border-top:
+                4px solid var(--accent);
+        }
+
+
+        .technical-card {
+            border-top:
+                4px solid var(--primary);
+        }
+
+
+        .core-card {
+            border-top:
+                4px solid #9b7ac8;
+        }
+
+
+        .interview-card {
+            border-top:
+                4px solid #d78a42;
+        }
+
+
+        /* ================================
+           SKILLS SECTION
+           ================================ */
+
+        .skills-section {
+
+            background: var(--surface);
+
+            margin-top: 20px;
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .skills-section h2 {
+
+            color: var(--primary);
+
+            font-size: 21px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .skills-list {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+        }
+
+
+        .skill {
+
+            padding: 8px 13px;
+
+            background: #f0e8ff;
+
+            color: var(--primary);
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* ================================
+           PROCESS SECTION
+           ================================ */
+
+        .process-section {
+
+            background: var(--surface);
+
+            margin-top: 20px;
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .process-section h2 {
+
+            color: var(--primary);
+
+            font-size: 21px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .process-list {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .process-step {
+
+            background: #faf8ff;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 12px;
+
+            padding: 15px;
+
+            text-align: center;
+        }
+
+
+        .process-number {
+
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin:
+                0 auto 9px;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .process-step span:last-child {
+
+            color: var(--text);
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            line-height: 1.4;
+        }
+
+
+        /* ================================
+           NOT FOUND
+           ================================ */
+
+        .not-found {
+
+            text-align: center;
+
+            background: var(--surface);
+
+            padding: 50px 20px;
+
+            border-radius: 18px;
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .not-found h2 {
+
+            color: var(--primary);
+
+            margin-bottom: 10px;
+        }
+
+
+        .not-found p {
+
+            color: var(--muted);
+
+            margin-bottom: 20px;
+        }
+
+
+        .not-found a {
+
+            display: inline-block;
+
+            background: var(--primary);
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 10px 18px;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+        }
+
+
+        /* ================================
+           MOBILE
+           ================================ */
+
+        @media (max-width: 700px) {
+
+            .company-navbar {
+
+                height: 68px;
+
+                padding: 0 18px;
+            }
+
+
+            .brand img {
+
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .brand-name {
+
+                font-size: 19px;
+            }
+
+
+            .back-btn {
+
+                font-size: 14px;
+
+                padding: 8px 10px;
+            }
+
+
+            .company-container {
+
+                margin-top: 30px;
+
+                padding:
+                    0 15px 40px;
+            }
+
+
+            .company-hero {
+
+                padding: 28px 23px;
+
+                border-radius: 17px;
+            }
+
+
+            .company-hero h1 {
+
+                font-size: 28px;
+            }
+
+
+            .preparation-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .preparation-card {
+
+                padding: 22px;
+            }
+
+
+            .process-list {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .process-list {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         NAVBAR
+         ================================ -->
+
+    <nav class="company-navbar">
+
+        <div class="brand">
+
+            <img
+                src="../assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo">
+
+            <span class="brand-name">
+                PlacementPrep
+            </span>
+
+        </div>
+
+
+        <a
+            href="companies.html"
+            class="back-btn">
+
+            ← Companies
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- ================================
+         MAIN
+         ================================ -->
+
+    <main class="company-container">
+
+
+        <!-- HERO -->
+
+        <section class="company-hero">
+
+            <h1 id="companyName">
+                Company Preparation
+            </h1>
+
+
+            <p id="companyDescription">
+                Build the skills and knowledge commonly needed
+                for software placement preparation.
+            </p>
+
+
+            <span
+                class="company-type"
+                id="companyType">
+
+                Placement Preparation
+
+            </span>
+
+        </section>
+
+
+
+        <!-- ================================
+             PREPARATION CARDS
+             ================================ -->
+
+        <div class="preparation-grid">
+
+
+            <!-- APTITUDE -->
+
+            <div
+                class="preparation-card aptitude-card">
+
+                <div class="card-icon">
+                    🧠
+                </div>
+
+
+                <h2>
+                    Aptitude
+                </h2>
+
+
+                <ul id="aptitudeList">
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- TECHNICAL -->
+
+            <div
+                class="preparation-card technical-card">
+
+                <div class="card-icon">
+                    💻
+                </div>
+
+
+                <h2>
+                    Technical
+                </h2>
+
+
+                <ul id="technicalList">
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- CORE CS -->
+
+            <div
+                class="preparation-card core-card">
+
+                <div class="card-icon">
+                    🗄️
+                </div>
+
+
+                <h2>
+                    Core CS
+                </h2>
+
+
+                <ul id="coreList">
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- INTERVIEW -->
+
+            <div
+                class="preparation-card interview-card">
+
+                <div class="card-icon">
+                    🎤
+                </div>
+
+
+                <h2>
+                    Interview
+                </h2>
+
+
+                <ul id="interviewList">
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================
+             SKILLS
+             ================================ -->
+
+        <section class="skills-section">
+
+            <h2>
+                Recommended Skills
+            </h2>
+
+
+            <div
+                class="skills-list"
+                id="skillsList">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             RECRUITMENT PROCESS
+             ================================ -->
+
+        <section class="process-section">
+
+            <h2>
+                Typical Preparation Flow
+            </h2>
+
+
+            <div
+                class="process-list"
+                id="processList">
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================================
+         JAVASCRIPT
+         ================================ -->
+
+    <script>
+
+        /*
+         * Company-specific preparation data
+         */
+
+        const companyData = {
+
+
+            /* ==========================
+               NVIDIA
+               ========================== */
+
+            "NVIDIA": {
+
+                type: "AI & Semiconductors",
+
+                description:
+                    "Prepare for software, AI, systems and semiconductor-focused technical roles.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Problem solving",
+                    "Data interpretation"
+                ],
+
+                technical: [
+                    "C/C++ programming",
+                    "Python programming",
+                    "Data Structures & Algorithms",
+                    "CUDA and parallel computing"
+                ],
+
+                core: [
+                    "Computer Architecture",
+                    "Operating Systems",
+                    "Computer Networks",
+                    "AI & Machine Learning"
+                ],
+
+                interview: [
+                    "Technical coding questions",
+                    "Project discussion",
+                    "Systems and architecture questions",
+                    "Behavioral questions"
+                ],
+
+                skills: [
+                    "C++",
+                    "Python",
+                    "DSA",
+                    "AI/ML",
+                    "Computer Architecture"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Interviews",
+                    "System / Technical Discussion",
+                    "Behavioral / HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               AMAZON
+               ========================== */
+
+            "Amazon": {
+
+                type: "Product Company",
+
+                description:
+                    "Build strong coding, problem-solving and behavioral interview skills.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Problem solving",
+                    "Data interpretation"
+                ],
+
+                technical: [
+                    "Arrays and Strings",
+                    "Linked Lists",
+                    "Trees and Graphs",
+                    "Dynamic Programming"
+                ],
+
+                core: [
+                    "OOP",
+                    "DBMS",
+                    "Operating Systems",
+                    "System Design Basics"
+                ],
+
+                interview: [
+                    "Coding problems",
+                    "Project discussion",
+                    "Leadership principles",
+                    "Behavioral questions"
+                ],
+
+                skills: [
+                    "DSA",
+                    "Java",
+                    "Python",
+                    "C++",
+                    "OOP"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Interviews",
+                    "Problem Solving Rounds",
+                    "Behavioral / Leadership Round"
+                ]
+            },
+
+
+            /* ==========================
+               GOOGLE
+               ========================== */
+
+            "Google": {
+
+                type: "Product Company",
+
+                description:
+                    "Focus on algorithms, advanced problem solving and strong computer science fundamentals.",
+
+                aptitude: [
+                    "Quantitative reasoning",
+                    "Logical reasoning",
+                    "Analytical thinking",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "Advanced DSA",
+                    "Algorithms",
+                    "Trees and Graphs",
+                    "Dynamic Programming"
+                ],
+
+                core: [
+                    "Operating Systems",
+                    "Computer Networks",
+                    "Databases",
+                    "System Design"
+                ],
+
+                interview: [
+                    "Coding interviews",
+                    "Algorithmic problem solving",
+                    "Project discussion",
+                    "Behavioral interview"
+                ],
+
+                skills: [
+                    "DSA",
+                    "Algorithms",
+                    "C++",
+                    "Java",
+                    "Python"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Interviews",
+                    "Coding & Problem Solving",
+                    "Behavioral Interview"
+                ]
+            },
+
+
+            /* ==========================
+               MICROSOFT
+               ========================== */
+
+            "Microsoft": {
+
+                type: "Product Company",
+
+                description:
+                    "Prepare for software engineering roles with strong coding and CS fundamentals.",
+
+                aptitude: [
+                    "Logical reasoning",
+                    "Quantitative aptitude",
+                    "Problem solving",
+                    "Analytical reasoning"
+                ],
+
+                technical: [
+                    "Data Structures",
+                    "Algorithms",
+                    "OOP",
+                    "Problem solving"
+                ],
+
+                core: [
+                    "DBMS",
+                    "Operating Systems",
+                    "Computer Networks",
+                    "System Design"
+                ],
+
+                interview: [
+                    "Coding rounds",
+                    "Technical discussion",
+                    "Project discussion",
+                    "HR / Behavioral"
+                ],
+
+                skills: [
+                    "DSA",
+                    "C++",
+                    "Java",
+                    "Python",
+                    "OOP"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Interviews",
+                    "Coding Rounds",
+                    "HR / Behavioral Round"
+                ]
+            },
+
+
+            /* ==========================
+               APPLE
+               ========================== */
+
+            "Apple": {
+
+                type: "Product Company",
+
+                description:
+                    "Develop strong programming, algorithms and systems knowledge.",
+
+                aptitude: [
+                    "Logical reasoning",
+                    "Quantitative aptitude",
+                    "Analytical thinking",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "DSA",
+                    "Algorithms",
+                    "C++ programming",
+                    "Swift fundamentals"
+                ],
+
+                core: [
+                    "Operating Systems",
+                    "Computer Architecture",
+                    "Networking",
+                    "System Design"
+                ],
+
+                interview: [
+                    "Technical coding",
+                    "Systems discussion",
+                    "Project discussion",
+                    "Behavioral interview"
+                ],
+
+                skills: [
+                    "C++",
+                    "Python",
+                    "Swift",
+                    "DSA",
+                    "Systems"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Interviews",
+                    "Specialized Technical Round",
+                    "Behavioral Interview"
+                ]
+            },
+
+
+            /* ==========================
+               META
+               ========================== */
+
+            "Meta": {
+
+                type: "Product Company",
+
+                description:
+                    "Focus on coding, algorithms, scalable systems and behavioral preparation.",
+
+                aptitude: [
+                    "Logical reasoning",
+                    "Problem solving",
+                    "Analytical reasoning",
+                    "Quantitative aptitude"
+                ],
+
+                technical: [
+                    "Arrays and Strings",
+                    "Trees and Graphs",
+                    "Dynamic Programming",
+                    "Algorithms"
+                ],
+
+                core: [
+                    "System Design",
+                    "Databases",
+                    "Operating Systems",
+                    "Distributed Systems"
+                ],
+
+                interview: [
+                    "Coding interviews",
+                    "System design",
+                    "Project discussion",
+                    "Behavioral interview"
+                ],
+
+                skills: [
+                    "Python",
+                    "C++",
+                    "Java",
+                    "DSA",
+                    "System Design"
+                ],
+
+                process: [
+                    "Coding Assessment",
+                    "Technical Interviews",
+                    "System Design",
+                    "Behavioral Interview"
+                ]
+            },
+
+
+            /* ==========================
+               ADOBE
+               ========================== */
+
+            "Adobe": {
+
+                type: "Software Company",
+
+                description:
+                    "Prepare with strong coding, algorithms and software engineering fundamentals.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Problem solving",
+                    "Data interpretation"
+                ],
+
+                technical: [
+                    "DSA",
+                    "Algorithms",
+                    "Java / C++",
+                    "OOP"
+                ],
+
+                core: [
+                    "DBMS",
+                    "Operating Systems",
+                    "Computer Networks",
+                    "System Design Basics"
+                ],
+
+                interview: [
+                    "Technical coding",
+                    "Project discussion",
+                    "Technical fundamentals",
+                    "HR interview"
+                ],
+
+                skills: [
+                    "Java",
+                    "C++",
+                    "Python",
+                    "DSA",
+                    "OOP"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Coding Rounds",
+                    "Technical Interview",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               IBM
+               ========================== */
+
+            "IBM": {
+
+                type: "Technology Company",
+
+                description:
+                    "Strengthen programming, cloud, AI and core computer science fundamentals.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Verbal ability",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "Python",
+                    "Java",
+                    "DSA",
+                    "Programming fundamentals"
+                ],
+
+                core: [
+                    "Cloud Computing",
+                    "AI fundamentals",
+                    "DBMS",
+                    "Computer Networks"
+                ],
+
+                interview: [
+                    "Technical interview",
+                    "Coding questions",
+                    "Project discussion",
+                    "HR interview"
+                ],
+
+                skills: [
+                    "Python",
+                    "Java",
+                    "Cloud",
+                    "AI",
+                    "DSA"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Round",
+                    "Coding Round",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               INFOSYS
+               ========================== */
+
+            "Infosys": {
+
+                type: "IT Services",
+
+                description:
+                    "Prepare aptitude, programming fundamentals and technical interview concepts.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Verbal ability",
+                    "Data interpretation"
+                ],
+
+                technical: [
+                    "Programming fundamentals",
+                    "DSA",
+                    "Java / Python",
+                    "Problem solving"
+                ],
+
+                core: [
+                    "DBMS",
+                    "OOP",
+                    "Computer Networks",
+                    "SQL"
+                ],
+
+                interview: [
+                    "Technical interview",
+                    "Project discussion",
+                    "HR questions",
+                    "Communication skills"
+                ],
+
+                skills: [
+                    "Java",
+                    "Python",
+                    "SQL",
+                    "DSA",
+                    "Communication"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Interview",
+                    "Managerial Discussion",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               TCS
+               ========================== */
+
+            "TCS": {
+
+                type: "IT Services",
+
+                description:
+                    "Build aptitude, coding, communication and core technical skills.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Verbal ability",
+                    "Data interpretation"
+                ],
+
+                technical: [
+                    "C / C++",
+                    "Java",
+                    "Python",
+                    "DSA"
+                ],
+
+                core: [
+                    "DBMS",
+                    "OOP",
+                    "SQL",
+                    "Computer Networks"
+                ],
+
+                interview: [
+                    "Technical interview",
+                    "Project discussion",
+                    "HR questions",
+                    "Communication skills"
+                ],
+
+                skills: [
+                    "C/C++",
+                    "Java",
+                    "Python",
+                    "SQL",
+                    "DSA"
+                ],
+
+                process: [
+                    "Aptitude Assessment",
+                    "Coding Assessment",
+                    "Technical Interview",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               WIPRO
+               ========================== */
+
+            "Wipro": {
+
+                type: "IT Services",
+
+                description:
+                    "Prepare aptitude, coding, technical fundamentals and communication.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Verbal ability",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "Java",
+                    "Python",
+                    "C++",
+                    "DSA"
+                ],
+
+                core: [
+                    "DBMS",
+                    "OOP",
+                    "Computer Networks",
+                    "SQL"
+                ],
+
+                interview: [
+                    "Technical interview",
+                    "Coding questions",
+                    "Project discussion",
+                    "HR preparation"
+                ],
+
+                skills: [
+                    "Java",
+                    "Python",
+                    "C++",
+                    "SQL",
+                    "Communication"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Coding Round",
+                    "Technical Interview",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               ACCENTURE
+               ========================== */
+
+            "Accenture": {
+
+                type: "Consulting & IT Services",
+
+                description:
+                    "Prepare for cognitive, technical, coding and communication assessments.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "English",
+                    "Analytical reasoning"
+                ],
+
+                technical: [
+                    "Programming",
+                    "Pseudocode",
+                    "DSA",
+                    "Problem solving"
+                ],
+
+                core: [
+                    "SQL",
+                    "OOP",
+                    "DBMS",
+                    "Computer Networks"
+                ],
+
+                interview: [
+                    "Technical assessment",
+                    "Coding assessment",
+                    "Communication",
+                    "HR interview"
+                ],
+
+                skills: [
+                    "Python",
+                    "Java",
+                    "SQL",
+                    "DSA",
+                    "Communication"
+                ],
+
+                process: [
+                    "Cognitive Assessment",
+                    "Technical Assessment",
+                    "Coding Assessment",
+                    "Interview"
+                ]
+            },
+
+
+            /* ==========================
+               COGNIZANT
+               ========================== */
+
+            "Cognizant": {
+
+                type: "IT Services",
+
+                description:
+                    "Strengthen programming, databases, aptitude and interview skills.",
+
+                aptitude: [
+                    "Aptitude",
+                    "Logical reasoning",
+                    "Verbal ability",
+                    "Data interpretation"
+                ],
+
+                technical: [
+                    "Java",
+                    "Python",
+                    "DSA",
+                    "Programming fundamentals"
+                ],
+
+                core: [
+                    "DBMS",
+                    "SQL",
+                    "OOP",
+                    "Operating Systems"
+                ],
+
+                interview: [
+                    "Technical interview",
+                    "Coding questions",
+                    "Project discussion",
+                    "HR questions"
+                ],
+
+                skills: [
+                    "Java",
+                    "Python",
+                    "SQL",
+                    "DSA",
+                    "OOP"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Assessment",
+                    "Technical Interview",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               CAPGEMINI
+               ========================== */
+
+            "Capgemini": {
+
+                type: "IT Services",
+
+                description:
+                    "Focus on aptitude, logical reasoning, coding and technical fundamentals.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "English",
+                    "Analytical reasoning"
+                ],
+
+                technical: [
+                    "Pseudocode",
+                    "Programming",
+                    "DSA",
+                    "Problem solving"
+                ],
+
+                core: [
+                    "SQL",
+                    "OOP",
+                    "DBMS",
+                    "Computer Networks"
+                ],
+
+                interview: [
+                    "Technical assessment",
+                    "Coding",
+                    "Project discussion",
+                    "HR interview"
+                ],
+
+                skills: [
+                    "Java",
+                    "Python",
+                    "SQL",
+                    "DSA"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Assessment",
+                    "Coding",
+                    "Interview"
+                ]
+            },
+
+
+            /* ==========================
+               HCLTECH
+               ========================== */
+
+            "HCLTech": {
+
+                type: "IT Services",
+
+                description:
+                    "Build strong technical fundamentals and problem-solving abilities.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Verbal ability",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "C++",
+                    "Java",
+                    "Python",
+                    "DSA"
+                ],
+
+                core: [
+                    "DBMS",
+                    "Operating Systems",
+                    "Computer Networks",
+                    "SQL"
+                ],
+
+                interview: [
+                    "Technical round",
+                    "Coding round",
+                    "Project discussion",
+                    "HR interview"
+                ],
+
+                skills: [
+                    "C++",
+                    "Java",
+                    "Python",
+                    "SQL",
+                    "DSA"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Round",
+                    "Coding Round",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               HEXAWARE
+               ========================== */
+
+            "Hexaware": {
+
+                type: "IT Services",
+
+                description:
+                    "Prepare programming, aptitude and technical interview fundamentals.",
+
+                aptitude: [
+                    "Aptitude",
+                    "Logical reasoning",
+                    "Verbal ability",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "Java",
+                    "Python",
+                    "DSA",
+                    "Programming"
+                ],
+
+                core: [
+                    "DBMS",
+                    "SQL",
+                    "OOP",
+                    "Computer Networks"
+                ],
+
+                interview: [
+                    "Technical round",
+                    "Coding",
+                    "Project discussion",
+                    "HR interview"
+                ],
+
+                skills: [
+                    "Java",
+                    "Python",
+                    "SQL",
+                    "DSA"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Round",
+                    "Coding",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               AMD
+               ========================== */
+
+            "AMD": {
+
+                type: "Semiconductors",
+
+                description:
+                    "Focus on systems, programming, computer architecture and problem solving.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Analytical thinking",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "C programming",
+                    "C++ programming",
+                    "DSA",
+                    "Python"
+                ],
+
+                core: [
+                    "Computer Architecture",
+                    "Operating Systems",
+                    "Digital Logic",
+                    "Embedded Systems"
+                ],
+
+                interview: [
+                    "Technical assessment",
+                    "Coding round",
+                    "Systems interview",
+                    "Behavioral interview"
+                ],
+
+                skills: [
+                    "C",
+                    "C++",
+                    "Python",
+                    "Computer Architecture",
+                    "DSA"
+                ],
+
+                process: [
+                    "Technical Assessment",
+                    "Coding Round",
+                    "Technical Interviews",
+                    "HR / Behavioral"
+                ]
+            },
+
+
+            /* ==========================
+               INTEL
+               ========================== */
+
+            "Intel": {
+
+                type: "Semiconductors",
+
+                description:
+                    "Build strong knowledge of programming, architecture and operating systems.",
+
+                aptitude: [
+                    "Logical reasoning",
+                    "Quantitative aptitude",
+                    "Analytical thinking",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "C",
+                    "C++",
+                    "DSA",
+                    "Linux"
+                ],
+
+                core: [
+                    "Computer Architecture",
+                    "Operating Systems",
+                    "Digital Logic",
+                    "Embedded Systems"
+                ],
+
+                interview: [
+                    "Technical interview",
+                    "Systems interview",
+                    "Coding questions",
+                    "HR interview"
+                ],
+
+                skills: [
+                    "C",
+                    "C++",
+                    "Python",
+                    "Linux",
+                    "Computer Architecture"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Interview",
+                    "Systems Interview",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               OPENAI
+               ========================== */
+
+            "OpenAI": {
+
+                type: "Artificial Intelligence",
+
+                description:
+                    "Focus on software engineering, machine learning and advanced problem solving.",
+
+                aptitude: [
+                    "Logical reasoning",
+                    "Problem solving",
+                    "Analytical thinking",
+                    "Quantitative reasoning"
+                ],
+
+                technical: [
+                    "Python",
+                    "C++",
+                    "DSA",
+                    "Algorithms"
+                ],
+
+                core: [
+                    "Machine Learning",
+                    "Deep Learning",
+                    "AI fundamentals",
+                    "Software Engineering"
+                ],
+
+                interview: [
+                    "Technical assessment",
+                    "Coding interview",
+                    "AI / ML discussion",
+                    "Behavioral interview"
+                ],
+
+                skills: [
+                    "Python",
+                    "C++",
+                    "Machine Learning",
+                    "DSA",
+                    "AI"
+                ],
+
+                process: [
+                    "Technical Assessment",
+                    "Coding / Technical Interviews",
+                    "Specialized Technical Discussion",
+                    "Behavioral Interview"
+                ]
+            },
+
+
+            /* ==========================
+               TECH MAHINDRA
+               ========================== */
+
+            "Tech Mahindra": {
+
+                type: "IT Services",
+
+                description:
+                    "Prepare programming, aptitude, technical fundamentals and communication.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Verbal ability",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "Java",
+                    "Python",
+                    "C++",
+                    "DSA"
+                ],
+
+                core: [
+                    "DBMS",
+                    "OOP",
+                    "SQL",
+                    "Computer Networks"
+                ],
+
+                interview: [
+                    "Technical round",
+                    "Coding",
+                    "Project discussion",
+                    "HR interview"
+                ],
+
+                skills: [
+                    "Java",
+                    "Python",
+                    "SQL",
+                    "DSA"
+                ],
+
+                process: [
+                    "Online Assessment",
+                    "Technical Round",
+                    "Coding",
+                    "HR Interview"
+                ]
+            },
+
+
+            /* ==========================
+               QSPIDERS
+               ========================== */
+
+            "QSpiders": {
+
+                type: "Placement Training",
+
+                description:
+                    "Strengthen your placement fundamentals through structured technical and aptitude preparation.",
+
+                aptitude: [
+                    "Quantitative aptitude",
+                    "Logical reasoning",
+                    "Verbal ability",
+                    "Problem solving"
+                ],
+
+                technical: [
+                    "Core Java",
+                    "Python",
+                    "SQL",
+                    "Programming fundamentals"
+                ],
+
+                core: [
+                    "Manual Testing",
+                    "Selenium",
+                    "DBMS",
+                    "Software Testing"
+                ],
+
+                interview: [
+                    "Technical interview",
+                    "Testing questions",
+                    "Coding questions",
+                    "HR interview"
+                ],
+
+                skills: [
+                    "Java",
+                    "Python",
+                    "SQL",
+                    "Aptitude",
+                    "Testing"
+                ],
+
+                process: [
+                    "Aptitude Test",
+                    "Technical Assessment",
+                    "Technical Interview",
+                    "HR Interview"
+                ]
+            }
+
+        };
+
+
+        /* =====================================
+           GET COMPANY FROM URL
+           ===================================== */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const companyName =
+            params.get("company");
+
+
+        const data =
+            companyData[companyName];
+
+
+        /* =====================================
+           DISPLAY COMPANY DATA
+           ===================================== */
+
+        if (data) {
+
+
+            document.getElementById(
+                "companyName"
+            ).textContent =
+                companyName + " Preparation";
+
+
+            document.getElementById(
+                "companyDescription"
+            ).textContent =
+                data.description;
+
+
+            document.getElementById(
+                "companyType"
+            ).textContent =
+                data.type;
+
+
+            document.title =
+                companyName +
+                " Preparation | PlacementPrep";
+
+
+            /* Aptitude */
+
+            document.getElementById(
+                "aptitudeList"
+            ).innerHTML =
+                data.aptitude
+                    .map(
+                        item =>
+                            `<li>${item}</li>`
+                    )
+                    .join("");
+
+
+            /* Technical */
+
+            document.getElementById(
+                "technicalList"
+            ).innerHTML =
+                data.technical
+                    .map(
+                        item =>
+                            `<li>${item}</li>`
+                    )
+                    .join("");
+
+
+            /* Core CS */
+
+            document.getElementById(
+                "coreList"
+            ).innerHTML =
+                data.core
+                    .map(
+                        item =>
+                            `<li>${item}</li>`
+                    )
+                    .join("");
+
+
+            /* Interview */
+
+            document.getElementById(
+                "interviewList"
+            ).innerHTML =
+                data.interview
+                    .map(
+                        item =>
+                            `<li>${item}</li>`
+                    )
+                    .join("");
+
+
+            /* Skills */
+
+            document.getElementById(
+                "skillsList"
+            ).innerHTML =
+                data.skills
+                    .map(
+                        skill =>
+                            `<span class="skill">${skill}</span>`
+                    )
+                    .join("");
+
+
+            /* Recruitment Process */
+
+            document.getElementById(
+                "processList"
+            ).innerHTML =
+                data.process
+                    .map(
+                        (step, index) => `
+
+                            <div class="process-step">
+
+                                <div class="process-number">
+                                    ${index + 1}
+                                </div>
+
+                                <span>
+                                    ${step}
+                                </span>
+
+                            </div>
+
+                        `
+                    )
+                    .join("");
+
+        }
+
+
+        /* =====================================
+           COMPANY NOT FOUND
+           ===================================== */
+
+        else {
+
+            document.querySelector(
+                ".company-container"
+            ).innerHTML = `
+
+                <div class="not-found">
+
+                    <h2>
+                        Company Not Found
+                    </h2>
+
+                    <p>
+                        We couldn't find preparation
+                        information for this company.
+                    </p>
+
+                    <a href="companies.html">
+                        ← Back to Companies
+                    </a>
+
+                </div>
+
+            `;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

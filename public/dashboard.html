@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Dashboard | PlacementPrep
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css">
+    
+        <link rel="icon"
+      type="image/jpeg"
+      href="../assets/placementprep-logo.jpg">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         
+         sidebar.js automatically inserts the sidebar.
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <header class="page-header">
+
+            <div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Track your placement preparation
+                    and stay career ready.
+                </p>
+
+            </div>
+
+
+            <!-- PROFILE -->
+
+<div class="profile-menu">
+
+    <button
+        class="profile-mini"
+        id="profileMenuBtn"
+        type="button">
+
+        <div
+            class="profile-avatar"
+            id="profileAvatar">
+
+            S
+
+        </div>
+
+
+        <div class="profile-info">
+
+            <strong id="studentName">
+                Student
+            </strong>
+
+            <span>
+                Engineering Student
+            </span>
+
+        </div>
+
+        <span class="profile-arrow">
+            ▾
+        </span>
+
+    </button>
+
+
+    <!-- PROFILE DROPDOWN -->
+
+    <div
+        class="profile-dropdown"
+        id="profileDropdown">
+
+        <a
+            href="profile/profile.html"
+            class="profile-dropdown-item">
+
+            <span>👤</span>
+
+            <div>
+                <strong>My Profile</strong>
+                <small>Edit your profile</small>
+            </div>
+
+        </a>
+
+
+        <a
+            href="resume/resume-builder.html"
+            class="profile-dropdown-item">
+
+            <span>📄</span>
+
+            <div>
+                <strong>Resume Builder</strong>
+                <small>Manage your resume</small>
+            </div>
+
+        </a>
+
+
+        <div class="profile-dropdown-divider"></div>
+
+
+        <button
+            type="button"
+            class="profile-dropdown-item logout-item"
+            id="profileLogout">
+
+            <span>🚪</span>
+
+            <div>
+                <strong>Logout</strong>
+                <small>Sign out of your account</small>
+            </div>
+
+        </button>
+
+    </div>
+
+</div>
+
+        </header>
+
+
+        <!-- =================================================
+             STATISTICS
+             ================================================= -->
+
+        <section class="stats-grid">
+
+
+            <!-- TESTS -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="card-subtitle">
+                        Tests Completed
+                    </span>
+
+                    <div class="stat-icon">
+                        📝
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="stat-value"
+                    id="testsCompleted">
+
+                    0
+
+                </div>
+
+
+                <div class="stat-label">
+                    Mock tests attempted
+                </div>
+
+            </div>
+
+
+            <!-- READINESS -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="card-subtitle">
+                        Readiness
+                    </span>
+
+                    <div class="stat-icon">
+                        📈
+                    </div>
+
+                </div>
+
+
+                <div class="stat-value">
+
+                    <span id="readiness">
+                        0
+                    </span>%
+
+                </div>
+
+
+                <div class="stat-label">
+                    Overall preparation score
+                </div>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="card-subtitle">
+                        Questions
+                    </span>
+
+                    <div class="stat-icon">
+                        ❓
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="stat-value"
+                    id="questionsAttempted">
+
+                    0
+
+                </div>
+
+
+                <div class="stat-label">
+                    Questions from completed tests
+                </div>
+
+            </div>
+
+
+            <!-- SCORE -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="card-subtitle">
+                        Total Score
+                    </span>
+
+                    <div class="stat-icon">
+                        ⭐
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="stat-value"
+                    id="totalScore">
+
+                    0
+
+                </div>
+
+
+                <div class="stat-label">
+                    Marks earned
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             WELCOME + PROGRESS
+             ================================================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- WELCOME CARD -->
+
+            <div class="welcome-card">
+
+                <small>
+                    WELCOME BACK
+                </small>
+
+
+                <h2 id="welcomeName">
+                    Ready to prepare?
+                </h2>
+
+
+                <p>
+
+                    Build your skills, practice placement
+                    questions, improve your confidence and
+                    get closer to your dream job.
+
+                </p>
+
+
+                <a
+                    href="preparation/preparation.html"
+                    class="primary-btn">
+
+                    Start Preparation →
+
+                </a>
+
+            </div>
+
+
+            <!-- PROGRESS CARD -->
+
+            <div class="progress-card">
+
+                <div class="card-title">
+                    Placement Readiness
+                </div>
+
+
+                <div class="card-subtitle">
+
+                    Based on your completed mock tests
+
+                </div>
+
+
+                <div class="progress-value">
+
+                    <strong id="progressPercent">
+                        0
+                    </strong>
+
+                    <span>
+                        %
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill">
+
+                    </div>
+
+                </div>
+
+
+                <p
+                    class="card-subtitle"
+                    id="progressMessage"
+                    style="margin-top:12px;">
+
+                    Start your first mock test to measure
+                    your readiness.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             QUICK ACTIONS
+             ================================================= -->
+
+        <section class="section">
+
+
+            <div class="section-title">
+                Quick Actions
+            </div>
+
+
+            <div class="quick-actions">
+
+
+                <!-- MOCK TEST -->
+
+                <a
+                    href="tests/tests.html"
+                    class="action-card">
+
+                    <div class="action-icon">
+                        📝
+                    </div>
+
+                    <h3>
+                        Take a Mock Test
+                    </h3>
+
+                    <p>
+                        Test your aptitude and
+                        technical knowledge.
+                    </p>
+
+                </a>
+
+
+                <!-- CODING -->
+
+                <a
+                    href="coding/coding.html"
+                    class="action-card">
+
+                    <div class="action-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Practice Coding
+                    </h3>
+
+                    <p>
+                        Improve programming and
+                        problem-solving skills.
+                    </p>
+
+                </a>
+
+
+                <!-- COMPANIES -->
+
+                <a
+                    href="companies/companies.html"
+                    class="action-card">
+
+                    <div class="action-icon">
+                        🏢
+                    </div>
+
+                    <h3>
+                        Explore Companies
+                    </h3>
+
+                    <p>
+                        Prepare for company-specific
+                        placement rounds.
+                    </p>
+
+                </a>
+
+
+                <!-- INTERVIEWS -->
+
+                <a
+                    href="interviews/interviews.html"
+                    class="action-card">
+
+                    <div class="action-icon">
+                        🎯
+                    </div>
+
+                    <h3>
+                        Interview Preparation
+                    </h3>
+
+                    <p>
+                        Practice technical and
+                        HR interview questions.
+                    </p>
+
+                </a>
+
+
+                <!-- RESUME -->
+
+                <a
+                    href="resume/resume-builder.html"
+                    class="action-card">
+
+                    <div class="action-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        Build Your Resume
+                    </h3>
+
+                    <p>
+                        Create a professional
+                        placement-ready resume.
+                    </p>
+
+                </a>
+
+
+                <!-- PROGRESS -->
+
+                <a
+                    href="progress/progress.html"
+                    class="action-card">
+
+                    <div class="action-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        View My Progress
+                    </h3>
+
+                    <p>
+                        Track your preparation
+                        and test performance.
+                    </p>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         SIDEBAR SCRIPT
+         ===================================================== -->
+
+    <script
+        src="js/sidebar.js">
+    </script>
+
+
+    <!-- =====================================================
+         DASHBOARD JAVASCRIPT
+         ===================================================== -->
+
+    <script>
+
+        /* =================================================
+           LOAD SESSION
+           ================================================= */
+
+        async function loadSession() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://localhost:3000/api/auth/session",
+                        {
+                            credentials: "include"
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+                }
+
+
+                const name =
+                    data.student.name ||
+                    "Student";
+
+
+                document.getElementById(
+                    "studentName"
+                ).textContent = name;
+
+
+                document.getElementById(
+                    "welcomeName"
+                ).textContent =
+                    `Welcome back, ${name}!`;
+
+
+                document.getElementById(
+                    "profileAvatar"
+                ).textContent =
+                    name
+                        .charAt(0)
+                        .toUpperCase();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Session loading error:",
+                    error
+                );
+
+                window.location.href =
+                    "login.html";
+
+            }
+
+        }
+
+
+        /* =================================================
+           LOAD PROGRESS
+           ================================================= */
+
+        async function loadProgress() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://localhost:3000/api/tests/progress",
+                        {
+                            credentials: "include"
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+
+                    return;
+                }
+
+
+                const progress =
+                    data.progress;
+
+
+                const testsCompleted =
+                    Number(
+                        progress.tests_completed || 0
+                    );
+
+
+                const totalScore =
+                    Number(
+                        progress.total_score || 0
+                    );
+
+
+                const totalMarks =
+                    Number(
+                        progress.total_marks || 0
+                    );
+
+
+                const readiness =
+                    Number(
+                        progress.readiness || 0
+                    );
+
+
+                document.getElementById(
+                    "testsCompleted"
+                ).textContent =
+                    testsCompleted;
+
+
+                document.getElementById(
+                    "readiness"
+                ).textContent =
+                    readiness;
+
+
+                document.getElementById(
+                    "progressPercent"
+                ).textContent =
+                    readiness;
+
+
+                document.getElementById(
+                    "progressFill"
+                ).style.width =
+                    `${Math.min(
+                        readiness,
+                        100
+                    )}%`;
+
+
+                document.getElementById(
+                    "totalScore"
+                ).textContent =
+                    totalScore;
+
+
+                document.getElementById(
+                    "questionsAttempted"
+                ).textContent =
+                    totalMarks;
+
+
+                const message =
+                    document.getElementById(
+                        "progressMessage"
+                    );
+
+
+                if (
+                    testsCompleted === 0
+                ) {
+
+                    message.textContent =
+                        "Start your first mock test to measure your readiness.";
+
+                } else if (
+                    readiness < 40
+                ) {
+
+                    message.textContent =
+                        "Keep practicing. You are building your foundation.";
+
+                } else if (
+                    readiness < 70
+                ) {
+
+                    message.textContent =
+                        "Good progress! Keep improving your weak areas.";
+
+                } else if (
+                    readiness < 90
+                ) {
+
+                    message.textContent =
+                        "Great work! You are getting placement ready.";
+
+                } else {
+
+                    message.textContent =
+                        "Excellent! Your preparation is looking strong.";
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Progress loading error:",
+                    error
+                );
+
+            }
+
+        }
+
+        /* =================================================
+   PROFILE DROPDOWN
+   ================================================= */
+
+const profileMenu =
+    document.querySelector(".profile-menu");
+
+const profileMenuBtn =
+    document.getElementById("profileMenuBtn");
+
+const profileDropdown =
+    document.getElementById("profileDropdown");
+
+
+profileMenuBtn.addEventListener(
+    "click",
+    function (event) {
+
+        event.stopPropagation();
+
+        profileMenu.classList.toggle("open");
+
+    }
+);
+
+
+/* Close when clicking outside */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            !profileMenu.contains(event.target)
+        ) {
+
+            profileMenu.classList.remove("open");
+
+        }
+
+    }
+);
+
+
+/* =================================================
+   PROFILE LOGOUT
+   ================================================= */
+
+document
+    .getElementById("profileLogout")
+    .addEventListener(
+        "click",
+        async function () {
+
+            try {
+
+                await fetch(
+                    "http://localhost:3000/api/auth/logout",
+                    {
+                        method: "POST",
+                        credentials: "include"
+                    }
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Logout error:",
+                    error
+                );
+
+            }
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+
+        /* =================================================
+           START
+           ================================================= */
+
+        loadSession();
+
+        loadProgress();
+
+    </script>
+
+
+</body>
+
+</html>

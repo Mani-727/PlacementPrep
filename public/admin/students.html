@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Students | PlacementPrep Admin</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* Navbar */
+        .admin-navbar {
+            height: 76px;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-text {
+            color: var(--primary);
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 9px;
+            transition: background 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--surface-2, #f0e8ff);
+        }
+
+        /* Main */
+        .container {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 22px 50px;
+        }
+
+        .page-header {
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* Card */
+        .card {
+            background: var(--surface);
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        /* Table */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px;
+            background: var(--surface-2, #f3edff);
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: #faf7ff;
+        }
+
+        /* Student ID */
+        td:first-child {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Branch */
+        td:nth-child(4) {
+            font-weight: 600;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            .admin-navbar {
+                height: 68px;
+                padding: 0 18px;
+            }
+
+            .brand img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-text {
+                font-size: 18px;
+            }
+
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+            .container {
+                margin-top: 30px;
+                padding: 0 15px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 27px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            th,
+            td {
+                padding: 12px 10px;
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="admin-navbar">
+
+        <div class="brand">
+
+            <img
+                src="../assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo"
+            >
+
+            <span class="brand-text">
+                PlacementPrep Admin
+            </span>
+
+        </div>
+
+
+        <a
+            class="back-btn"
+            href="admin-dashboard.html"
+        >
+            ← Dashboard
+        </a>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <div class="page-header">
+
+            <h1>
+                Students 👨‍🎓
+            </h1>
+
+            <p class="subtitle">
+                Registered student overview.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Branch</th>
+                            <th>Year</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentsTable">
+
+                        <tr>
+                            <td>1</td>
+                            <td>Test Student</td>
+                            <td>test@example.com</td>
+                            <td>CSE</td>
+                            <td>3rd Year</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

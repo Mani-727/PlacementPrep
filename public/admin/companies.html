@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Companies | PlacementPrep Admin</title>
+
+    <link rel="icon" type="image/jpeg" href="../assets/placementprep-logo.jpg">
+    <link rel="stylesheet" href="../css/theme.css">
+
+    <style>
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .admin-navbar {
+            height: 76px;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .brand-text {
+            color: var(--primary);
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 9px;
+            transition: background 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--surface-2, #f0e8ff);
+        }
+
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        .container {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 22px 50px;
+        }
+
+        .page-header {
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CARD
+        ========================== */
+
+        .card {
+            background: var(--surface);
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           FORM
+        ========================== */
+
+        .form {
+            display: grid;
+            gap: 13px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            outline: none;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 14px;
+            transition: border 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(75, 38, 127, 0.08);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--muted);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
+
+        .add-btn {
+            border: none;
+            padding: 13px 20px;
+            border-radius: 9px;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #7b4ab8
+            );
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(75, 38, 127, 0.2);
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        .message {
+            min-height: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           COMPANY GRID
+        ========================== */
+
+        .company-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .company {
+            background: #faf7ff;
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .company:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(75, 38, 127, 0.1);
+        }
+
+        .company h3 {
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .company p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .company a {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 8px 12px;
+            background: #f0e8ff;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .company a:hover {
+            background: #e7dafa;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 800px) {
+
+            .company-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .admin-navbar {
+                height: 68px;
+                padding: 0 18px;
+            }
+
+            .brand img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-text {
+                font-size: 18px;
+            }
+
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+            .container {
+                margin-top: 30px;
+                padding: 0 15px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 27px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .company-list {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="admin-navbar">
+
+        <div class="brand">
+
+            <img
+                src="../assets/placementprep-logo.jpg"
+                alt="PlacementPrep Logo"
+            >
+
+            <span class="brand-text">
+                PlacementPrep Admin
+            </span>
+
+        </div>
+
+
+        <a
+            href="admin-dashboard.html"
+            class="back-btn"
+        >
+            ← Dashboard
+        </a>
+
+    </nav>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="container">
+
+
+        <div class="page-header">
+
+            <h1>
+                Company Management 🏢
+            </h1>
+
+            <p class="subtitle">
+                Add and manage companies in the placement portal.
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             ADD COMPANY
+        ========================== -->
+
+        <div class="card">
+
+            <h2>
+                Add Company
+            </h2>
+
+
+            <div class="form">
+
+
+                <input
+                    id="name"
+                    placeholder="Company name"
+                >
+
+
+                <input
+                    id="logo"
+                    placeholder="Logo URL (optional)"
+                >
+
+
+                <textarea
+                    id="description"
+                    placeholder="Company description"
+                ></textarea>
+
+
+                <input
+                    id="website"
+                    placeholder="Company website"
+                >
+
+
+                <button
+                    class="add-btn"
+                    onclick="addCompany()"
+                >
+                    Add Company
+                </button>
+
+
+                <div
+                    id="message"
+                    class="message"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             COMPANY LIST
+        ========================== -->
+
+        <div class="card">
+
+            <h2>
+                Companies
+            </h2>
+
+
+            <div
+                id="companyList"
+                class="company-list"
+            >
+                Loading...
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+
+    <script>
+
+
+        /* =========================
+           LOAD COMPANIES
+        ========================== */
+
+        async function loadCompanies() {
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:3000/api/companies"
+                );
+
+
+                const result =
+                    await response.json();
+
+
+                const list =
+                    document.getElementById("companyList");
+
+
+                if (
+                    !result.success ||
+                    result.companies.length === 0
+                ) {
+
+                    list.innerHTML =
+                        "<p>No companies added yet.</p>";
+
+                    return;
+
+                }
+
+
+                list.innerHTML = "";
+
+
+                result.companies.forEach(company => {
+
+                    list.innerHTML += `
+
+                        <div class="company">
+
+                            <h3>
+                                ${company.name}
+                            </h3>
+
+                            <p>
+                                ${
+                                    company.description ||
+                                    "No description available."
+                                }
+                            </p>
+
+                            ${
+                                company.website
+                                ? `
+                                    <a
+                                        href="${company.website}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Visit Website →
+                                    </a>
+                                  `
+                                : ""
+                            }
+
+                        </div>
+
+                    `;
+
+                });
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                document.getElementById(
+                    "companyList"
+                ).innerHTML =
+                    "<p>Unable to load companies.</p>";
+
+            }
+
+        }
+
+
+
+        /* =========================
+           ADD COMPANY
+        ========================== */
+
+        async function addCompany() {
+
+            const name =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
+
+            const logo =
+                document
+                    .getElementById("logo")
+                    .value
+                    .trim();
+
+
+            const description =
+                document
+                    .getElementById("description")
+                    .value
+                    .trim();
+
+
+            const website =
+                document
+                    .getElementById("website")
+                    .value
+                    .trim();
+
+
+            const message =
+                document.getElementById("message");
+
+
+            if (!name) {
+
+                message.textContent =
+                    "Company name is required.";
+
+                message.style.color =
+                    "#b91c1c";
+
+                return;
+
+            }
+
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:3000/api/companies",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            name,
+                            logo,
+                            description,
+                            website
+
+                        })
+
+                    }
+                );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    message.textContent =
+                        "✅ Company added successfully.";
+
+                    message.style.color =
+                        "#166534";
+
+
+                    document.getElementById(
+                        "name"
+                    ).value = "";
+
+                    document.getElementById(
+                        "logo"
+                    ).value = "";
+
+                    document.getElementById(
+                        "description"
+                    ).value = "";
+
+                    document.getElementById(
+                        "website"
+                    ).value = "";
+
+
+                    loadCompanies();
+
+
+                } else {
+
+                    message.textContent =
+                        result.message ||
+                        "Failed to add company.";
+
+                    message.style.color =
+                        "#b91c1c";
+
+                }
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "Unable to connect to server.";
+
+                message.style.color =
+                    "#b91c1c";
+
+            }
+
+        }
+
+
+        /* Initial Load */
+        loadCompanies();
+
+    </script>
+
+
+</body>
+
+</html>
