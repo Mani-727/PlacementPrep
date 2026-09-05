@@ -476,7 +476,7 @@ async function loadQuestions() {
 
         const response =
             await fetch(
-                "http://localhost:3000/api/tests/questions?testId=" + testId
+                "/api/tests/questions?testId=" + testId,
             );
 
         const result =
@@ -871,7 +871,7 @@ async function submitTest() {
 
         const response =
             await fetch(
-                "http://localhost:3000/api/tests/attempts",
+                "/api/tests/attempts",
                 {
                     method: "POST",
 
