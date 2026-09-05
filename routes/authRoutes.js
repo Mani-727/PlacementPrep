@@ -72,6 +72,67 @@ router.post("/register", async (req, res) => {
     }
 });
 
+// Student Login
+router.post("/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "Email and password are required."
+            });
+        }
+
+        const [students] = await db.promise().query(
+            "SELECT * FROM students WHERE email = ?",
+            [email]
+        );
+
+        if (students.length === 0) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid email or password."
+            });
+        }
+
+        const student = students[0];
+
+        const passwordMatch = await bcrypt.compare(
+            password,
+            student.password
+        );
+
+        if (!passwordMatch) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid email or password."
+            });
+        }
+
+        req.session.studentId = student.id;
+        req.session.studentName = student.full_name;
+
+        res.json({
+            success: true,
+            message: "Login successful!",
+            student: {
+                id: student.id,
+                name: student.full_name,
+                email: student.email
+            }
+        });
+
+    } catch (error) {
+        console.error("Login error:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Server error during login."
+        });
+    }
+});
+
 router.get("/session", (req, res) => {
     if (!req.session.studentId) {
         return res.json({
@@ -99,22 +160,9 @@ router.post("/logout", (req, res) => {
 
         res.json({
             success: true,
-            message: "Login successful!",
-            student: {
-                id: student.id,
-                name: student.full_name,
-                email: student.email
-            }
+            message: "Logged out successfully"
         });
-
-    } catch (error) {
-        console.error("Login error:", error);
-
-        res.status(500).json({
-            success: false,
-            message: "Server error during login."
-        });
-    }
+    });
 });
 
 module.exports = router;
