@@ -30,7 +30,9 @@ app.use(session({
     }
 }));
 
-app.use(express.static("public"));
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "public")));
 
 
 // Routes
@@ -42,7 +44,7 @@ app.use("/api/tests", testRoutes);
 
 // Home route
 app.get("/", (req, res) => {
-    res.send("Placement Preparation Portal API is running 🚀");
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Start server
